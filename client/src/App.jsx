@@ -1,5 +1,5 @@
 import {
-  NavBar,
+  Navbar,
   Hero,
   QR,
   Manufacturer,
@@ -11,7 +11,7 @@ import {
 const App = () => (
   <div className="min-h-screen">
     <div className="gradient-bg-welcome">
-      <NavBar />
+      <Navbar />
       <Hero />
     </div>
     <QR />
