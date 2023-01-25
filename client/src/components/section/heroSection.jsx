@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 import { Loader } from "./";
-import LearnMore from "../buttons/learnMore";
+import ReadMore from "../buttons/readMore";
 
 
 
@@ -36,7 +35,7 @@ const Welcome = () => {
             solution ensures product authenticity. Protect your brand, build
             consumer trust and secure your supply chain with us."
           </p>
-          <LearnMore />
+          <ReadMore />
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
               Blockchain
