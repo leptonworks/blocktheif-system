@@ -1,4 +1,4 @@
-export { default as NavBar } from "./NavBar";
+export { default as Navbar } from "./Navbar";
 export { default as Hero } from "./heroSection";
 export { default as Footer } from "./footer";
 export { default as QR } from "./qrSection";
