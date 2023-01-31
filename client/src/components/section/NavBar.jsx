@@ -4,9 +4,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import Model from './Model';
 
-
-
-
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -27,10 +24,6 @@ const navigation = [
   { name: 'aboutUsSection', href: 'aboutUsSection', current: false },
 
 ];
-
-
-
-
 
 const NavbarItem = ({ title, classProps }) => {
   return <li className={`mx-4 cursor-pointer ${classProps}`}>{title}</li>;
@@ -85,7 +78,6 @@ const NavBar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <div className="hidden mr-5 sm:ml-6 sm:block font-family: Montserrat">
                   <div className="flex space-x-4">
-                  
 
                   </div>
       <ul className="font-size: 0.1rem; text-white md:flex hidden list-none flex-row justify-between items-center flex-initial ">
@@ -130,20 +122,10 @@ const NavBar = () => {
           </ul>
         )}
       </div>
-            </div>  
-                   </div> 
-
-
-
-
-
-              </div>
-
-
             </div>
-         
-
-
+                   </div>
+              </div>
+            </div>
 </>
 )}
     </Disclosure>
@@ -152,3 +134,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

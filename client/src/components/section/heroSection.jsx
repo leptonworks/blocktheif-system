@@ -21,33 +21,25 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Welcome = () => {
   return (
-    <section>
-      <div className="w-screen h-screen grid grid-rows-2 text-white text-4xl md:grid-cols-2">
-        <div className=" w-full h-full bg-[#D9D9D9] centered md:h-screen">
-          <p>Page 1</p>
-          <div className="w-full ">
-            <img src={landingPageLogo} alt="logo" />
-          </div>
-        </div>
-
-        {/* page 2 */}
-        <div className="w-full h-full bg-[#141414] centered md:h-screen">
-          <p>Page 2</p>
-          <div className="flex w-full justify-center items-center">
-            <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-              <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
-                <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                  Block Thief <br /> Secure Your Products
-                </h1>
-                <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-                  "Eliminate counterfeit products with our advanced
-                  blockchain-based authentication system. Our tamper-proof and
-                  easily verifiable solution ensures product authenticity.
-                  Protect your brand, build consumer trust and secure your
-                  supply chain with us."
-                </p>
-                <ReadMore />
-              </div>
+    <section className="h-screen grid md:grid-cols-2">
+      <div className="w-full h-full bg-gray-300 text-center md:h-screen display-flex flex-center items-center">
+        <img src={landingPageLogo} alt="logo" className="w-1/2" />
+      </div>
+      <div className="w-full h-full bg-black text-center md:h-screen">
+        <div className="flex w-full justify-center items-center">
+          <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
+            <div className="flex-1 flex-col md:mr-10">
+              <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
+                Block Thief <br /> Secure Your Products
+              </h1>
+              <p className="mt-5 text-white font-light md:w-9/12 w-full text-base">
+                "Eliminate counterfeit products with our advanced
+                blockchain-based authentication system. Our tamper-proof and
+                easily verifiable solution ensures product authenticity. Protect
+                your brand, build consumer trust and secure your supply chain
+                with us."
+              </p>
+              <ReadMore />
             </div>
           </div>
         </div>
