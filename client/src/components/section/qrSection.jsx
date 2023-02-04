@@ -1,14 +1,23 @@
 import React from "react";
 
+import ScanButton from "../buttons/scanButton";
+
 function qrSection() {
   return (
     <section className="h-screen grid grid-cols-1">
-      <div className="col-span-1 text-left bg-black text-white font-bold py-32">
+      <div className="col-span-1 text-left bg-black text-white font-bold py-32 md:p-20">
         <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient ">
           Scan Your
           <br />
           QR
         </h1>
+
+
+              <div className = "flex items-center justify-center">
+                <ScanButton />
+              </div>
+
+        
       </div>
       <div className="col-span-1 text-center bg-gray-300 text-white font-bold py-32">
         <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
