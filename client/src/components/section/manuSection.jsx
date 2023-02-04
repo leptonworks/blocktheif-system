@@ -1,4 +1,6 @@
 import React from "react";
+import AddProduct from "../buttons/addProduct";
+
 function manuSection() {
   return (
     <section className="h-screen grid md:grid-cols-2">
@@ -22,7 +24,11 @@ function manuSection() {
                 </p>
               </div>
               <div className="flex items-center justify-center">
-                <h1 className="text-white font-bold">Add Product</h1>
+
+                <div className = "flex items-center justify-center">
+                <AddProduct />
+              </div>
+
               </div>
             </div>
           </div>

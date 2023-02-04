@@ -1,12 +1,13 @@
 import React from "react";
 
-import logo from "../../../images/logo.png";
+import logo from "../../../images/landingPageLogo.png";
 
 const footer = () => (
   <div className="w-full flex md:justify-center justify-between items-center flex-col p-4 bg-gray-300">
     <div className="w-full flex sm:flex-row flex-col justify-between items-center my-4">
       <div className="flex flex-[0.5] justify-center items-center">
-        <img src={logo} alt="logo" className="w-32" />
+        <img src={logo} alt="landingPageLogo" className="w-8 " />
+        <p className="font-bold text-black">BLOCK THIEF</p>
       </div>
       <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
         <p className="text-black text-base text-center mx-2 cursor-pointer">ScanQR</p>

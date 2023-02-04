@@ -23,7 +23,7 @@ function aboutUsSection() {
                 </p>
               </div>
               <div className="flex items-center justify-center">
-                <h1 className="text-white font-bold">Add Product</h1>
+
               </div>
             </div>
           </div>
