@@ -1,7 +1,7 @@
 import React from "react";
-import AddProduct from "../buttons/addProduct";
 
-function manuSection() {
+
+function manuacturer() {
   return (
     <section className="h-screen grid md:grid-cols-2">
       <div className="bg-gray-300 flex items-center justify-center ">
@@ -25,9 +25,7 @@ function manuSection() {
               </div>
               <div className="flex items-center justify-center">
 
-                <div className = "flex items-center justify-center">
-                <AddProduct />
-              </div>
+                
 
               </div>
             </div>
@@ -38,4 +36,4 @@ function manuSection() {
   );
 }
 
-export default manuSection;
+export default manuacturer;

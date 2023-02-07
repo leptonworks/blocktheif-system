@@ -1,12 +1,11 @@
-import React from "react";
-import AddProduct from "../buttons/addProduct";
+import React from 'react'
 
-function manuSection() {
+function aboutUs() {
   return (
     <section className="h-screen grid md:grid-cols-2">
       <div className="bg-gray-300 flex items-center justify-center ">
-        <h1 className="text-3xl sm:text-5xl  py-1">
-          Manufacturer <br /> Secure Your Products
+        <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
+          About <br /> Us
         </h1>
       </div>
       <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
@@ -14,7 +13,7 @@ function manuSection() {
           <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
             <div className="flex-1 flex-col md:mr-10">
               <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                Block Thief <br /> Secure Your Products
+                Contact <br />Us
               </h1>
               <div className="flex items-center justify-center">
                 <p className="mt-5 text-white font-light md:w-9/12 w-full text-base">
@@ -25,17 +24,13 @@ function manuSection() {
               </div>
               <div className="flex items-center justify-center">
 
-                <div className = "flex items-center justify-center">
-                <AddProduct />
-              </div>
-
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+      </section>
+     )
 }
 
-export default manuSection;
+export default aboutUs

@@ -11,6 +11,7 @@ const footer = () => (
       </div>
       <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
         <p className="text-black text-base text-center mx-2 cursor-pointer">ScanQR</p>
+        
         <p className="text-black text-base text-center mx-2 cursor-pointer">Manufacturer</p>
         <p className="text-black text-base text-center mx-2 cursor-pointer">Reviews</p>
         <p className="text-black text-base text-center mx-2 cursor-pointer">About Us</p>

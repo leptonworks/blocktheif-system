@@ -55,22 +55,7 @@ const NavBar = () => {
 
               <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                 <div className="flex items-center flex-shrink-0">
-                  {/*
-                  <Image
-                    className="block w-auto h-8 lg:hidden"
-                    src="/assets/logo.png"
-                    width={10}
-                    height={10}
-                    alt="Your Company"
-                  />
-                  <Image
-                    className="hidden w-auto h-8 lg:block"
-                    src="/assets/logo.png"
-                    width={10}
-                    height={10}
-                    alt="Your Company"
-                  />
-                  */}
+                  {}
                   <p className="font-bold text-white">BLOCK THIEF</p>
                 </div>
               </div>
