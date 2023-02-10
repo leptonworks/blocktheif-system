@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 function scanQR() {
   return (
     <section className="h-screen grid grid-cols-1">
@@ -12,12 +10,7 @@ function scanQR() {
           QR
         </h1>
 
-
-              <div className = "flex items-center justify-center">
-
-              </div>
-
-        
+        <div className="flex items-center justify-center"></div>
       </div>
       <div className="col-span-1 text-center bg-gray-300 text-white font-bold py-32">
         <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
