@@ -11,8 +11,9 @@ import {
   AboutUsPage,
   LoginPage,
   ReviewPage,
+  AddProd
 } from "./components/section";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";``
 // import ScanQR from "./pages/user/scanQR";
 
 const App = () => (
@@ -23,7 +24,7 @@ const App = () => (
       </div>
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
-        <Route path="/Manufacturer" element={<ManufacturerPage />} />
+        <Route path="/addProd" element={<AddProd />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Reviews" element={<ReviewPage />} />
