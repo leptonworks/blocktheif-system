@@ -13,3 +13,4 @@ export { default as ManufacturerPage } from "../../pages/manufacturer/manuacture
 export { default as AboutUsPage } from "../../pages/aboutUs";
 export { default as LoginPage } from "../../pages/login";
 export { default as ReviewPage } from "../../pages/review";
+export { default as AddProduct } from "../../pages/manufacturer/addProduct"

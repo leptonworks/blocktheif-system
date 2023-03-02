@@ -11,6 +11,7 @@ import {
   AboutUsPage,
   LoginPage,
   ReviewPage,
+  AddProduct
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import ScanQR from "./pages/user/scanQR";
@@ -27,6 +28,7 @@ const App = () => (
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Reviews" element={<ReviewPage />} />
+        <Route path="/AddProduct" element={<AddProduct />} />
 
         <Route
           path="/"
