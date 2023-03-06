@@ -1,79 +1,138 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ethers } from "ethers";
+import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 
 function addProduct() {
+  const [productName, setProductName] = useState("");
+  const [productPrice, setProductPrice] = useState(0);
+  const [productId, setProductId] = useState(0);
+  const [product, setProduct] = useState({ name: "", price: 0 });
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contractAddress = "0xb09da8a5B236fE0295A345035287e80bb0008290";
+  const ABI = greeter.abi;
+  const contract = new ethers.Contract(contractAddress, ABI, signer);
+
+  useEffect(() => {
+    const requestAccounts = async () => {
+      await provider.send("eth_requestAccounts", []);
+    };
+
+    requestAccounts().catch(console.error);
+  }, []);
+
+  const handleProductNameChange = (e) => {
+    setProductName(e.target.value);
+  };
+
+  const handleProductPriceChange = (e) => {
+    setProductPrice(e.target.value);
+  };
+
+  const handleProductIdChange = (e) => {
+    setProductId(e.target.value);
+  };
+
+  const handleAddProductSubmit = async (e) => {
+    e.preventDefault();
+    await contract.addProduct(productId, productName, productPrice);
+    setSuccessMessage("Product added successfully!");
+  };
+
+  const handleGetProductSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const [name, price] = await contract.getProduct(productId);
+      setProduct({ name, price: ethers.utils.formatEther(price) });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <section className="h-screen grid md:grid-cols-2">
       <div className="bg-gray-300 flex items-center justify-center ">
-        <form>
-          <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="product_name"
-              id="product_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              for="product_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Product Name
-            </label>
-          </div>
-          <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="Emei"
-              id="Emei"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              for="Emei"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Emei Number
-            </label>
-          </div>
-          <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="color"
-              id="color"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            <label
-              for="color"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Product Color 
-            </label>
-          </div>
-        </form>
-      </div>
-      <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
-        <div className="flex w-full justify-center items-center">
-          <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-            <div className="flex-1 flex-col md:mr-10">
-              <form>
-              <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                SomeOther <br /> Fooking details
-              </h1>
-                <button
-                  type="submit"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Submit
-                </button>
-              </form>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center mt-5">
+            <div className="w-full md:w-1/2 lg:w-1/2 px-4">
+              <h3 className="text-lg font-bold">Product Data</h3>
+              <p className="mt-2">Product Name: {product.name}</p>
+              <p className="mt-2">Product Price: {product.price} ETH</p>
             </div>
           </div>
-        </div>
+          </div>
       </div>
+
+          <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
+            <div className="flex w-full justify-center items-center">
+              <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
+                <div className="flex-1 flex-col md:mr-10">
+                  <h4 className="text-lg font-bold mb-2">Add Product</h4>
+                  <form onSubmit={handleAddProductSubmit}>
+                    <div className="mb-3">
+                      <input
+                        type="number"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product ID"
+                        onChange={handleProductIdChange}
+                        value={productId}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="text"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product Name"
+                        onChange={handleProductNameChange}
+                        value={productName}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="number"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product Price"
+                        onChange={handleProductPriceChange}
+                        value={productPrice}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Add Product
+                    </button>
+                    {successMessage && (
+                      <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-3">
+                        {successMessage}
+                      </div>
+                    )}
+                  </form>
+
+                  <h4 className="text-lg font-bold mt-3 mb-2">Get Product</h4>
+                  <form onSubmit={handleGetProductSubmit}>
+                    <div className="mb-3">
+                      <input
+                        type="number"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product ID"
+                        onChange={handleProductIdChange}
+                        value={productId}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Get Product
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
     </section>
   );
 }
