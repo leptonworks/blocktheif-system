@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/himashaherath/Desktop/P_001/blocktheif-system/contract/contracts/Greeter.sol": {
-      "lastModificationDate": 1678114668715,
-      "contentHash": "81ec639d8c669d2e7a69f02e64175410",
+    "G:\\github\\blockthief\\blocktheif-system\\contract\\contracts\\Greeter.sol": {
+      "lastModificationDate": 1678163363009,
+      "contentHash": "8074f842296126a49bbdfb40bd488c32",
       "sourceName": "contracts/Greeter.sol",
       "solcConfig": {
         "version": "0.8.0",
@@ -34,41 +34,6 @@
       ],
       "artifacts": [
         "Product"
-      ]
-    },
-    "/Users/himashaherath/Desktop/P_001/blocktheif-system/contract/node_modules/hardhat/console.sol": {
-      "lastModificationDate": 1677910845272,
-      "contentHash": "4ff3cd2f6272c9a6516e9ee4f2b967d3",
-      "sourceName": "hardhat/console.sol",
-      "solcConfig": {
-        "version": "0.8.4",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        ">= 0.4.22 <0.9.0"
-      ],
-      "artifacts": [
-        "console"
       ]
     }
   }

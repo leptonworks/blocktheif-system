@@ -1,18 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
+
+import QRCode from "qrcode";
+
+
+
 
 function scanQR() {
+
+  const [qrValue,setQrValue] = useState("")
+  const [qrImgUrl,setQrImgUrl] = useState("")
+  
+
+  //gg
+  
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    if(!qrValue){
+      return alert("please enter some value")
+    }
+
+    const response = await QRCode.toDataURL(qrValue);
+    setQrImgUrl(response);
+    setQrValue("");
+
+  }
+
+
+  
+
   return (
     <section className="h-screen grid grid-cols-1">
-      <div className="col-span-1 text-left bg-black text-white font-bold py-32 md:p-20">
-        <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient ">
+      <div className="col-span-1 text-left bg-black text-black font-bold py-32 md:p-20">
+        <h1 className="text-black text-3xl sm:text-5xl py-2 text-gradient ">
           Scan Your
           <br />
           QR
         </h1>
+        <br />
+
+        <h3>
+          Create QR Code
+        </h3>
+
+        <div className="card-body">
+          <form onSubmit={handleSubmit}
+          className="d-flex align-itms-center justify-content-between">
+            <input 
+            placeholder="enter text"
+            type="text" 
+            className="form-control border-top-0 border-start-0 border-end-0"
+            style={{width : "40%"}} 
+            name="" 
+            id="text"
+              value={qrValue}
+              onChange = {(e) => setQrValue(e.target.value)}
+             />
+            <button 
+            type="submit"
+            className="btn btn-primary text-white"
+            style={{width : "7%"}}
+            > 
+            Generate
+            </button>
+          </form>
+
+          {qrImgUrl && (
+            <div className="mt-4 mx-auto">
+              <a href={qrImgUrl} download = "qr.png">
+              <img src={qrImgUrl} alt="QR code" />
+              </a>
+              </div>
+          )}
+
+        </div>
+
+        <br /><br /><br /><br />
+
+
+        
+
+
+
 
         <div className="flex items-center justify-center"></div>
       </div>
-      <div className="col-span-1 text-center bg-gray-300 text-white font-bold py-32">
+      <div className="col-  span-1 text-center bg-gray-300 text-white font-bold py-32">
         <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
           "Empower yourself with the assurance of authenticity. Scan your
           products with Blockthief's QR code scanner."

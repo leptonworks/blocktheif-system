@@ -11,7 +11,7 @@ function addProduct() {
 
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
-  const contractAddress = "0xb09da8a5B236fE0295A345035287e80bb0008290";
+  const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
   const ABI = greeter.abi;
   const contract = new ethers.Contract(contractAddress, ABI, signer);
 

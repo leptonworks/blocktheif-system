@@ -7,6 +7,9 @@ export { default as Review } from "./reviewSection";
 export { default as AboutUS } from "./aboutUsSection";
 export { default as Manufacturer } from "./manuSection";
 export { default as Loader } from "./Loader";
+export { default as createQR } from "./createQR";
+export { default as readQR } from "./readQR";
+
 // PAGES
 export { default as ScanQrPage } from "../../pages/user/scanQR";
 export { default as ManufacturerPage } from "../../pages/manufacturer/manuacturer";
