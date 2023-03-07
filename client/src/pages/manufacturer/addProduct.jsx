@@ -2,29 +2,39 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 
-function addProduct() {
+function addProduct() {  
+
   const [productName, setProductName] = useState("");
+
+  const [productEmei, setProductEmei] = useState("");
+  const [productColor, setProductColor] = useState("");
+  const [productSize, setProductSize] = useState("");
+
   const [productPrice, setProductPrice] = useState(0);
   const [productId, setProductId] = useState(0);
-  const [product, setProduct] = useState({ name: "", price: 0 });
+  const [product, setProduct] = useState({ name: "", emei:"", color: "",size:"", price: 0 });
   const [successMessage, setSuccessMessage] = useState("");
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-  const contractAddress = "0xb09da8a5B236fE0295A345035287e80bb0008290";
+  const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
   const ABI = greeter.abi;
+  const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+  const signer = provider.getSigner();
   const contract = new ethers.Contract(contractAddress, ABI, signer);
-
-  useEffect(() => {
-    const requestAccounts = async () => {
-      await provider.send("eth_requestAccounts", []);
-    };
-
-    requestAccounts().catch(console.error);
-  }, []);
 
   const handleProductNameChange = (e) => {
     setProductName(e.target.value);
+  };
+
+  const handleProductEmeiChange = (e) => {
+    setProductEmei(e.target.value);
+  };
+
+  const handleProductColorChange = (e) => {
+    setProductColor(e.target.value);
+  };
+
+  const handleProductSizeChange = (e) => {
+    setProductSize(e.target.value);
   };
 
   const handleProductPriceChange = (e) => {
@@ -37,15 +47,24 @@ function addProduct() {
 
   const handleAddProductSubmit = async (e) => {
     e.preventDefault();
-    await contract.addProduct(productId, productName, productPrice);
-    setSuccessMessage("Product added successfully!");
+    console.log("Submitting add product form...");
+    try {
+      await contract.addProduct(productId, productName,productEmei,productColor,productSize,productPrice);
+      console.log("Product added successfully.");
+      alert("Product added successfully!");
+      setSuccessMessage("Product added successfully!");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleGetProductSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting get product form...");
     try {
-      const [name, price] = await contract.getProduct(productId);
-      setProduct({ name, price: ethers.utils.formatEther(price) });
+      const [name, emei, color, size, price] = await contract.getProduct(productId);
+      setProduct({ name, emei, color, size, price: ethers.utils.formatEther(price) });
+      console.log("Product retrieved successfully.");
     } catch (err) {
       console.error(err);
     }
@@ -59,6 +78,9 @@ function addProduct() {
             <div className="w-full md:w-1/2 lg:w-1/2 px-4">
               <h3 className="text-lg font-bold">Product Data</h3>
               <p className="mt-2">Product Name: {product.name}</p>
+              <p className="mt-2">Product Emei: {product.emei}</p>
+              <p className="mt-2">Product Color: {product.color}</p>
+              <p className="mt-2">Product Size: {product.size}</p>
               <p className="mt-2">Product Price: {product.price} ETH</p>
             </div>
           </div>
@@ -87,6 +109,33 @@ function addProduct() {
                         placeholder="Product Name"
                         onChange={handleProductNameChange}
                         value={productName}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="text"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product Emei"
+                        onChange={handleProductEmeiChange}
+                        value={productEmei}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="text"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product Color"
+                        onChange={handleProductColorChange}
+                        value={productColor}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="text"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product Size"
+                        onChange={handleProductSizeChange}
+                        value={productSize}
                       />
                     </div>
                     <div className="mb-3">

@@ -12,6 +12,7 @@ import {
   LoginPage,
   ReviewPage,
   AddProduct
+  // ManuDashboard
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import ScanQR from "./pages/user/scanQR";
@@ -29,6 +30,7 @@ const App = () => (
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Reviews" element={<ReviewPage />} />
         <Route path="/AddProduct" element={<AddProduct />} />
+        {/* <Route path="/ManuDashboard" element={<ManuDashboard />} /> */}
 
         <Route
           path="/"
