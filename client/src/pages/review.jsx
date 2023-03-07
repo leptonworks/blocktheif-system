@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState,useRef } from "react";
+//import QrScanner from "react-qr-scanner"
 
 function review() {
+
+  const [file,setFile] = useState(null);
+  const [data,setData] = useState(null);
+  const fileRef = useRef();
+
+  const handleClick = () => {
+    fileRef.current.click();
+  }
+
+  const handleChange = async(e) => {
+    const file = e.target.files[0];
+    setFile(file);
+    const result = await QrScanner.scanImage(file)
+    console.log(result);
+  }
+
+
   return (
     <div className="flex w-full justify-left items-center bg-black">
       <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
@@ -10,22 +28,47 @@ function review() {
             <br />
             Reviews
           </h1>
-          <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-            "Discover the unmatched satisfaction of our customers through their
-            candid reviews."
-          </p>
-          <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-            "Discover the unmatched satisfaction of our customers through their
-            candid reviews."
-          </p>
-          <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-            "Discover the unmatched satisfaction of our customers through their
-            candid reviews."
-          </p>
-          <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-            "Discover the unmatched satisfaction of our customers through their
-            candid reviews."
-          </p>
+          
+          <h3>
+          read QR Code
+        </h3>
+
+          
+
+        {JSON.stringify(file)}
+
+        <div className="card-body d-flex align-items-center justify-content-center">
+          <form className="d-flex align-itms-center justify-content-between">
+            
+            <button 
+            type="button"
+            onClick = {handleClick}
+            className="btn btn-success"
+
+            > 
+            Scan QR code  
+            </button>
+
+
+
+            <input 
+            type="file"
+            ref={fileRef}
+            onChange={handleChange}
+            accept=".png, .jpg , .jpeg "
+            className="d-none "
+            />
+            <div className="mt-4">
+
+            </div>
+
+
+          </form>
+        </div>
+
+
+
+
           <div className = "flex items-center justify-center">
 
               </div>
