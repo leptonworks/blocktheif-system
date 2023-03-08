@@ -14,6 +14,7 @@ function addProduct() {
   const [productId, setProductId] = useState(0);
   const [product, setProduct] = useState({ name: "", emei:"", color: "",size:"", price: 0 });
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
   const ABI = greeter.abi;
@@ -53,8 +54,12 @@ function addProduct() {
       console.log("Product added successfully.");
       alert("Product added successfully!");
       setSuccessMessage("Product added successfully!");
+      setErrorMessage("");
     } catch (err) {
       console.error(err);
+      alert("Error: ID already exists. Please choose another ID");
+      setErrorMessage("Error: ID already exists. Please choose another ID.");
+
     }
   };
 
@@ -65,6 +70,17 @@ function addProduct() {
       const [name, emei, color, size, price] = await contract.getProduct(productId);
       setProduct({ name, emei, color, size, price: ethers.utils.formatEther(price) });
       console.log("Product retrieved successfully.");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleRemoveProductSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submitting remove product form...");
+    try {
+      await contract.removeProduct(productId);
+      console.log("Product removed successfully.");
     } catch (err) {
       console.error(err);
     }
@@ -176,6 +192,24 @@ function addProduct() {
                       className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
                     >
                       Get Product
+                    </button>
+                  </form>
+                  <h4 className="text-lg font-bold mt-3 mb-2">Remove Product</h4>
+                  <form onSubmit={handleRemoveProductSubmit}>
+                    <div className="mb-3">
+                      <input
+                        type="number"
+                        className="w-full border-2 border-gray-300 p-2 rounded-md focus:outline-none focus:border-blue-500"
+                        placeholder="Product ID"
+                        onChange={handleProductIdChange}
+                        value={productId}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Remove Product
                     </button>
                   </form>
                 </div>
