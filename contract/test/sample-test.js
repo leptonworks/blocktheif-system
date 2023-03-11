@@ -86,5 +86,6 @@ describe("Product", function () {
     expect(result[2]).to.equal(newColor);
     expect(result[3]).to.equal(newSize);
     expect(result[4]).to.equal(newPrice);
-  });  
+  });
+  
 });

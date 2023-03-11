@@ -1,47 +1,80 @@
-// import React, { useState } from 'react';
-// import QrReader from 'react-qr-reader';
+import React, { useState } from "react";
+import Overview from "./dashboardPages/Overview";
+import ProductManagement from "./dashboardPages/ProductManagement";
+import Analytics from "./dashboardPages/Analytics";
+// import Settings from "./dashboardPages/Settings";
 
-// function manuDashboard() {
-//     const [qrCode, setQrCode] = useState(null);
+function ManuDashboard() {
+  const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
 
-//   const handleScan = (result) => {
-//     if (result) {
-//       setQrCode(result);
-//     }
-//   };
+  const renderPage = () => {
+    switch (activeMenuItem) {
+      case "dashboard":
+        return <Overview />;
+      case "projects":
+        return <ProductManagement />;
+      case "calendar":
+        return <Analytics />;
+      case "settings":
+        return <Settings />;
+      default:
+        return <Overview />;
+    }
+  };
 
-//   const handleError = (error) => {
-//     console.error(error);
-//   };
+  return (
+    <div className="flex">
+      <nav className="flex flex-col items-center justify-between w-64 h-screen py-6 bg-gray-800 text-gray-400">
+        <ul className="mt-32 flex flex-col items-center justify-center">
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "dashboard" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("dashboard")}
+          >
+            <a href="#">Overview</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "projects" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("projects")}
+          >
+            <a href="#">Product Management</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "calendar" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("calendar")}
+          >
+            <a href="#">Analytics</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "settings" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("settings")}
+          >
+            <a href="#">Profile</a>
+          </li>
+        </ul>
+        <div className="flex flex-col items-center">
+          <p className="text-sm">&copy; My App 2023</p>
+          <div className="my-2">
+            <a className="text-gray-400 hover:text-white" href="#">
+              Privacy Policy
+            </a>
+            <span className="mx-2">•</span>
+            <a className="text-gray-400 hover:text-white" href="#">
+              Terms of Service
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div className="flex-1">{renderPage()}</div>
+    </div>
+  );
+}
 
-//   const handleFileUpload = (event) => {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
-
-//     reader.onload = (event) => {
-//       setQrCode(event.target.result);
-//     };
-
-//     reader.readAsDataURL(file);
-//   };
-
-//   return (
-//     <div>
-//       <h1>QR Scanner</h1>
-//       <div>
-//         <QrReader
-//           delay={300}
-//           onError={handleError}
-//           onScan={handleScan}
-//           style={{ width: '100%' }}
-//         />
-//       </div>
-//       <div>
-//         <input type="file" accept="image/*" onChange={handleFileUpload} />
-//       </div>
-//       {qrCode && <p>{qrCode}</p>}
-//     </div>
-//   );
-// }
-
-// export default manuDashboard
+export default ManuDashboard;

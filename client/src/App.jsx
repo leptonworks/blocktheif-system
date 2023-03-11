@@ -11,8 +11,8 @@ import {
   AboutUsPage,
   LoginPage,
   ReviewPage,
-  AddProduct
-  // ManuDashboard
+  AddProduct,
+  ManuDashboard
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import ScanQR from "./pages/user/scanQR";
@@ -22,7 +22,6 @@ const App = () => (
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
         <Navbar />
-      </div>
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
@@ -30,7 +29,7 @@ const App = () => (
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Reviews" element={<ReviewPage />} />
         <Route path="/AddProduct" element={<AddProduct />} />
-        {/* <Route path="/ManuDashboard" element={<ManuDashboard />} /> */}
+        <Route path="/ManuDashboard" element={<ManuDashboard />} />
 
         <Route
           path="/"
@@ -46,6 +45,7 @@ const App = () => (
           }
         />
       </Routes>
+    </div>
     </div>
   </BrowserRouter>
 );

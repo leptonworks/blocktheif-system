@@ -35,16 +35,6 @@ contract Product {
         products[id] = ProductData(name, emei, color, size, price);
         emit ProductAdded(id, name, emei, color, size, price);
     }
-
-    // function getCountProducts() public view returns (uint256) {
-    // uint256 count = 0;
-    // for (uint256 i = 0; i < 2**256 - 1; i++) {
-    //     if (products[i].price != 0) {
-    //         count++;
-    //     }
-    // }
-    // return count;
-    // }
     
     receive() external payable {} // to support receiving ETH by default
 
@@ -52,4 +42,5 @@ contract Product {
                 revert("Invalid transaction");
 
     }
+
 }
