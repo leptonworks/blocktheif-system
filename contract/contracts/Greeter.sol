@@ -11,12 +11,15 @@ contract Product {
     }
 
     mapping(uint256 => ProductData) private products;
+    uint256 private productCount = 0;
 
     event ProductAdded(uint256 id, string name, string emei, string color, string size, uint256 price);
+    event ProductRemoved(uint256 id);
 
     function addProduct(uint256 id, string memory name,string memory emei,string memory color,string memory size, uint256 price) public {
         require(products[id].price == 0, "Product with the same ID already exists");
         products[id] = ProductData(name, emei, color, size, price);
+        productCount++;
         emit ProductAdded(id, name, emei, color, size, price);
     }
 
@@ -28,6 +31,8 @@ contract Product {
     function removeProduct(uint256 id) public {
         require(products[id].price != 0, "Product with the given ID does not exist");
         delete products[id];
+        productCount--;
+        emit ProductRemoved(id);
     }
     
     function updateProduct(uint256 id, string memory name, string memory emei, string memory color, string memory size, uint256 price) public {
@@ -43,4 +48,7 @@ contract Product {
 
     }
 
+    function getProductCount() public view returns (uint256) {
+        return productCount;
+    }
 }
