@@ -26,7 +26,6 @@ const App = () => (
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
         <Navbar />
-      </div>
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
 
@@ -53,6 +52,7 @@ const App = () => (
           }
         />
       </Routes>
+    </div>
     </div>
   </BrowserRouter>
 );
