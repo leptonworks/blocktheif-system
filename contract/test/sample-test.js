@@ -87,5 +87,29 @@ describe("Product", function () {
     expect(result[3]).to.equal(newSize);
     expect(result[4]).to.equal(newPrice);
   });
+
+  it("should get the counter", async function () {
+    
+    const id = 1;
+    const name = "Product 1";
+    const emei = "1234567890";
+    const color = "Red";
+    const size = "Large";
+    const price = 100;
+    await product.addProduct(id, name, emei, color, size, price);
+
+    const newid = 2;
+    const newName = "New Product Name";
+    const newEmei = "0987654321";
+    const newColor = "Blue";
+    const newSize = "Small";
+    const newPrice = 50;
+
+    await product.addProduct(newid, newName, newEmei, newColor, newSize, newPrice);
+    const result = await product.getProductCount();
+
+    expect(result).to.equal(2);
+
+  });
   
 });
