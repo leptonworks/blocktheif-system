@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import QRCode from "qrcode";
 
-function scanQR() {
+function webCam() {
 
   const [qrValue,setQrValue] = useState("")
   const [qrImgUrl,setQrImgUrl] = useState("")
@@ -107,4 +107,4 @@ function scanQR() {
   </div>
 </section>;
 
-export default scanQR;
+export default webCam;

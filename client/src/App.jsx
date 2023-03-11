@@ -11,7 +11,11 @@ import {
   AboutUsPage,
   LoginPage,
   ReviewPage,
-  AddProduct
+  AddProduct,
+  ManuDashboard,
+  Manulogin,
+
+
   // ManuDashboard
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -25,12 +29,15 @@ const App = () => (
       </div>
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
+
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Reviews" element={<ReviewPage />} />
         <Route path="/AddProduct" element={<AddProduct />} />
-        {/* <Route path="/ManuDashboard" element={<ManuDashboard />} /> */}
+        <Route path="/ManuDashboard" element={<ManuDashboard />} />
+        <Route path="/Manulogin" element={<Manulogin />} />
+
 
         <Route
           path="/"

@@ -1,7 +1,7 @@
 import React from 'react'
 import { AiFillPlayCircle } from "react-icons/ai";
 
-function AddProduct() {
+function userLoginButton() {
   const ScrollDown = () => {};
 
   return (
@@ -10,7 +10,7 @@ function AddProduct() {
     onClick={ScrollDown}
     className="flex flex-row justify-center items-center my-5 bg-[#F9FAFB] p-4 rounded-full cursor-pointer hover:bg-[#e0e0e0] border-2 border-[#1E1E1E]"
   >
-    <p className="text-black text-base font-semibold mr-2">Add Products</p>
+    <p className="text-black text-base font-semibold mr-2">userLoginButton</p>
     <AiFillPlayCircle className="text-black mr-2" />
 
   </button>
@@ -19,4 +19,4 @@ function AddProduct() {
   )
 }
 
-export default AddProduct
+export default userLoginButton

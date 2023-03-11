@@ -1,34 +1,70 @@
 import React from 'react'
 
-function login() {
+
+
+export default function login() {
   return (
+    
     <section className="h-screen grid md:grid-cols-2">
-      <div className="bg-gray-300 flex items-center justify-center ">
-        <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-        LOGIN
-        </h1>
-      </div>
-      <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
-        <div className="flex w-full justify-center items-center">
-          <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-            <div className="flex-1 flex-col md:mr-10">
-              <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                Login Details
-              </h1>
-              <div className="flex items-center justify-center">
-                <p className="mt-5 text-white font-light md:w-9/12 w-full text-base">
-                  Lorem Ipsum
-                </p>
-              </div>
-              <div className="flex items-center justify-center">
+      
+      {/*left side */}
 
-              </div>
-            </div>
-          </div>
+      <div className='bg-gray-300 flex flex-col justify-center'>
+            <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
+                <h2 className='text-4xl dark:text-white font-bold text-center'>LOGIN</h2>
+                <div className='flex flex-col text-gray-400 py-2'>
+                    <label>Username</label>
+                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" />
+                </div>
+                <div className='flex flex-col text-gray-400 py-2'>
+                    <label>Password</label>
+                    <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" />
+                </div>
+                <div className='flex justify-between text-gray-400 py-2'>
+                    <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
+                    <p>Forgot Password</p>
+                </div>
+                <button className='w-full my-5 py-2 bg-[#2e47a5] shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>LOGIN</button>
+
+            </form>
         </div>
-      </div>
-      </section>
-     )
-}
 
-export default login;
+      
+      {/* <div className="w-full h-full bg-black text-center md:h-screen"> */}
+   
+          
+            
+              
+            <div className='bg-[#1E1E1E] flex flex-col justify-center'>
+            <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
+                <h2 className='text-4xl dark:text-white font-bold text-center'>LOGIN</h2>
+                <div className='flex flex-col text-gray-400 py-2'>
+                    <label>Username</label>
+                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" />
+                </div>
+                <div className='flex flex-col text-gray-400 py-2'>
+                    <label>Password</label>
+                    <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" />
+                </div>
+                <div className='flex justify-between text-gray-400 py-2'>
+                    <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
+                    <p>Forgot Password</p>
+                </div>
+                <button className='w-full my-5 py-2 bg-[#2e47a5] shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>LOGIN</button>
+
+            </form>
+        </div>
+
+
+
+              
+            
+          
+        
+     
+    </section>
+
+
+
+  )
+}

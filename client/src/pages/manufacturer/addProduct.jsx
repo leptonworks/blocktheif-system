@@ -103,11 +103,11 @@ function addProduct() {
           </div>
       </div>
 
-          <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
+          <div className="col-span-1 w-full h-full text-center bg-[#1E1E1E] py-32 flex items-center justify-center">
             <div className="flex w-full justify-center items-center">
               <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
                 <div className="flex-1 flex-col md:mr-10">
-                  <h4 className="text-lg font-bold mb-2">Add Product</h4>
+                  <h4 className="text-white text-lg font-bold mb-2">Add Product</h4>
                   <form onSubmit={handleAddProductSubmit}>
                     <div className="mb-3">
                       <input
@@ -176,7 +176,7 @@ function addProduct() {
                     )}
                   </form>
 
-                  <h4 className="text-lg font-bold mt-3 mb-2">Get Product</h4>
+                  <h4 className="text-white text-lg font-bold mt-3 mb-2">Get Product</h4>
                   <form onSubmit={handleGetProductSubmit}>
                     <div className="mb-3">
                       <input
@@ -194,7 +194,7 @@ function addProduct() {
                       Get Product
                     </button>
                   </form>
-                  <h4 className="text-lg font-bold mt-3 mb-2">Remove Product</h4>
+                  <h4 className="text-white text-lg font-bold mt-3 mb-2">Remove Product</h4>
                   <form onSubmit={handleRemoveProductSubmit}>
                     <div className="mb-3">
                       <input

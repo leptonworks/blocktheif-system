@@ -4,7 +4,7 @@ import React from 'react'
 function aboutUs() {
   return (
     
-      <div class="bg-[url('/images/abdul-a-wmdfPWB2lWM-unsplash.jpg')] w-full h-full bg-cover bg-center md:p-20 py-12 px-4  ">
+      <div class="bg-[#1E1E1E] bg-[url('/images/abdul-a-wmdfPWB2lWM-unsplash.jpg')] w-full h-full bg-cover bg-center md:p-20 py-12 px-4  ">
       <div className="flex w-full justify-center items-center ">
       <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
         <div className="flex-1 flex flex-col justify-start items-start">

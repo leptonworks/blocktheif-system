@@ -23,7 +23,7 @@ const NavBar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <nav className="bg-black w-full flex md:justify-center justify-between items-center p-4 fixed ">
+    <nav className="bg-[#1E1E1E] w-full flex md:justify-center justify-between items-center p-4 fixed ">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <Link to="/">
           <p className="font-bold text-white">BLOCK THIEF</p>
@@ -60,7 +60,7 @@ const NavBar = () => {
             <li className="text-xl w-full my-2">
               <AiOutlineClose onClick={() => setToggleMenu(false)} />
             </li>
-            {["ScanQR", "Manufacturer", "Reviews", "AboutUs"].map(
+            {["ScanQR", "Manufacturer", "Reviews", "AboutUs","login"].map(
               (item, index) => (
                 <NavBarItem
                   key={item + index}

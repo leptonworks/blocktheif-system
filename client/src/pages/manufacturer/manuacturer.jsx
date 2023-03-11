@@ -9,7 +9,7 @@ function manuacturer() {
           Manufacturer <br /> Secure Your Products
         </h1>
       </div>
-      <div className="col-span-1 w-full h-full text-center bg-black py-32 flex items-center justify-center">
+      <div className="col-span-1 w-full h-full text-center bg-[#1E1E1E] py-32 flex items-center justify-center">
         <div className="flex w-full justify-center items-center">
           <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
             <div className="flex-1 flex-col md:mr-10">
