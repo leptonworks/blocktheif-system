@@ -22,7 +22,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-native-camera": "^4.2.1",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.1",
+    "recharts": "^2.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

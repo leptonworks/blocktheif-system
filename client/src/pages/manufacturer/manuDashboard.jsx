@@ -1,66 +1,80 @@
-import { useState } from "react";
-const manuDashboard = () => {
-  const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Inbox", src: "Chat" },
-    { title: "Accounts", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "Search", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Files ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
-  ];
+import React, { useState } from "react";
+import Overview from "./dashboardPages/Overview";
+import ProductManagement from "./dashboardPages/ProductManagement";
+import Analytics from "./dashboardPages/Analytics";
+// import Settings from "./dashboardPages/Settings";
+
+function ManuDashboard() {
+  const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
+
+  const renderPage = () => {
+    switch (activeMenuItem) {
+      case "dashboard":
+        return <Overview />;
+      case "projects":
+        return <ProductManagement />;
+      case "calendar":
+        return <Analytics />;
+      case "settings":
+        return <Settings />;
+      default:
+        return <Overview />;
+    }
+  };
 
   return (
     <div className="flex">
-      <div
-        className={` ${
-          open ? "w-72" : "w-20 "
-        } bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
-      >
-        <img
-          src="./src/assets/control.png"
-          className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
-           border-2 rounded-full  ${!open && "rotate-180"}`}
-          onClick={() => setOpen(!open)}
-        />
-        <div className="flex gap-x-4 items-center">
-          <img
-            src="./src/assets/logo.png"
-            className={`cursor-pointer duration-500 ${
-              open && "rotate-[360deg]"
+      <nav className="flex flex-col items-center justify-between w-64 h-screen py-6 bg-gray-800 text-gray-400">
+        <ul className="mt-32 flex flex-col items-center justify-center">
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "dashboard" ? "bg-gray-700 text-white" : ""
             }`}
-          />
-          <h1
-            className={`text-white origin-left font-medium text-xl duration-200 ${
-              !open && "scale-0"
-            }`}
+            onClick={() => setActiveMenuItem("dashboard")}
           >
-            Designer
-          </h1>
-        </div>
-        <ul className="pt-6">
-          {Menus.map((Menu, index) => (
-            <li
-              key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${
-                index === 0 && "bg-light-white"
-              } `}
-            >
-              <img src={`./src/assets/${Menu.src}.png`} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
-                {Menu.title}
-              </span>
-            </li>
-          ))}
+            <a href="#">Overview</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "projects" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("projects")}
+          >
+            <a href="#">Product Management</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "calendar" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("calendar")}
+          >
+            <a href="#">Analytics</a>
+          </li>
+          <li
+            className={`px-4 py-5 hover:bg-gray-700 hover:text-white ${
+              activeMenuItem === "settings" ? "bg-gray-700 text-white" : ""
+            }`}
+            onClick={() => setActiveMenuItem("settings")}
+          >
+            <a href="#">Profile</a>
+          </li>
         </ul>
-      </div>
-      <div className="h-screen flex-1 p-7">
-        <h1 className="text-2xl font-semibold ">Home Page</h1>
-      </div>
+        <div className="flex flex-col items-center">
+          <p className="text-sm">&copy; My App 2023</p>
+          <div className="my-2">
+            <a className="text-gray-400 hover:text-white" href="#">
+              Privacy Policy
+            </a>
+            <span className="mx-2">•</span>
+            <a className="text-gray-400 hover:text-white" href="#">
+              Terms of Service
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div className="flex-1">{renderPage()}</div>
     </div>
   );
-};
-export default manuDashboard;
+}
+
+export default ManuDashboard;

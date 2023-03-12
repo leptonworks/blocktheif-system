@@ -6,6 +6,7 @@ Packages    -    Client   -  npm install
 
 
                             npm i @mui/icons-material
+                            npm install recharts
 
 
                 Contract          -  npx hardhat run scripts/sample-script.js --network localhost 
