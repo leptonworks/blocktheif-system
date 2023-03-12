@@ -11,7 +11,7 @@ function ProductManagement() {
           <a href="/addproduct" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
             <p className="text-2xl text-gray-400 dark:text-gray-500">Add products</p>
           </a>
-          <a href="#" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
+          <a href="/RemoveProducts" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
             <p className="text-2xl text-gray-400 dark:text-gray-500">Remove Product </p>
           </a>
         </div>
