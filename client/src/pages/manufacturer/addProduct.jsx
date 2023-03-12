@@ -58,10 +58,14 @@ function addProduct() {
     setProductId(e.target.value);
   };
 
+  // let productIdCounter = 1; // initialize the counter at 1
+
   const handleAddProductSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting add product form...");
     const productId = new Date().getTime(); // Generate unique ID using timestamp
+  //     const productId = productIdCounter; // use the counter as the ID
+  // productIdCounter++; // increment the counter
     try {
       console.log(productId);
       await contract.addProduct(

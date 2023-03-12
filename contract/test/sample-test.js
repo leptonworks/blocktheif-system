@@ -111,5 +111,29 @@ describe("Product", function () {
     expect(result).to.equal(2);
 
   });
+
+  it("should retrieve all product IDs", async function () {
+    const id1 = 2131;
+    const name1 = "Product 1";
+    const emei1 = "1234567890";
+    const color1 = "Red";
+    const size1 = "Large";
+    const price1 = 100;
+  
+    const id2 = 12322;
+    const name2 = "Product 2";
+    const emei2 = "0987654321";
+    const color2 = "Blue";
+    const size2 = "Medium";
+    const price2 = 50;
+  
+    await product.addProduct(id1, name1, emei1, color1, size1, price1);
+    await product.addProduct(id2, name2, emei2, color2, size2, price2);
+  
+    const productIDs = await product.getProductIds();
+    expect(productIDs.length).to.equal(2);
+    expect(productIDs[0]).to.equal(id1);
+    expect(productIDs[1]).to.equal(id2);
+  });
   
 });

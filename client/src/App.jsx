@@ -14,6 +14,7 @@ import {
   AddProduct,
   ManuDashboard,
   Manulogin,
+  ViewProduct
 
 
   // ManuDashboard
@@ -36,6 +37,8 @@ const App = () => (
         <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/ManuDashboard" element={<ManuDashboard />} />
         <Route path="/Manulogin" element={<Manulogin />} />
+        <Route path="/ViewProduct" element={<ViewProduct />} />
+
 
 
         <Route
