@@ -18,5 +18,6 @@ export { default as ReviewPage } from "../../pages/review";
 export { default as AddProduct } from "../../pages/manufacturer/addProduct"
 export { default as ViewProduct } from "../../pages/manufacturer/dashboardPages/viewProducts"
 export { default as RemoveProducts } from "../../pages/manufacturer/dashboardPages/removeProducts"
+export { default as ReviewProducts } from "../../pages/manufacturer/dashboardPages/reviewProducts"
 export { default as ManuDashboard } from "../../pages/manufacturer/manuDashboard"
 export { default as Manulogin } from "../../pages/manufacturer/manuLogin"

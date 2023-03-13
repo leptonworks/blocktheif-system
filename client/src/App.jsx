@@ -15,7 +15,8 @@ import {
   ManuDashboard,
   Manulogin,
   ViewProduct,
-  RemoveProducts
+  RemoveProducts,
+  ReviewProducts
 
 
   // ManuDashboard
@@ -40,6 +41,7 @@ const App = () => (
         <Route path="/Manulogin" element={<Manulogin />} />
         <Route path="/ViewProduct" element={<ViewProduct />} />
         <Route path="/RemoveProducts" element={<RemoveProducts />} />
+        <Route path="/ReviewProducts" element={<ReviewProducts />} />
 
 
 
