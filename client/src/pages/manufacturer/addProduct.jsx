@@ -143,7 +143,7 @@ function addProduct() {
           <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
             <div className="flex-1 flex-col md:mr-10">
               <h4 className="text-white text-lg font-bold mb-2">Add Product</h4>
-              <form onSubmit={handleAddProductSubmit}>
+              <form onSubmit={handleAddProductSubmit} novalidate>
                 <div className="mb-3">
                   <input
                     type="text"
@@ -151,6 +151,7 @@ function addProduct() {
                     placeholder="Product Name"
                     onChange={handleProductNameChange}
                     value={productName}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -160,6 +161,7 @@ function addProduct() {
                     placeholder="Product Emei"
                     onChange={handleProductEmeiChange}
                     value={productEmei}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -169,6 +171,7 @@ function addProduct() {
                     placeholder="Product Color"
                     onChange={handleProductColorChange}
                     value={productColor}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -178,6 +181,7 @@ function addProduct() {
                     placeholder="Product Size"
                     onChange={handleProductSizeChange}
                     value={productSize}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -187,6 +191,7 @@ function addProduct() {
                     placeholder="Product Price"
                     onChange={handleProductPriceChange}
                     value={productPrice}
+                    required
                   />
                 </div>
                 <button
