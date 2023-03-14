@@ -2,38 +2,95 @@ import React from "react";
 
 function ProductManagement() {
   return (
-    <div className="mt-16 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-        <div className="grid grid-cols-3 gap-4 mb-4">
-          <a href="/ViewProduct" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">View products</p>
+    <div class="mt-32 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <div class="grid grid-cols-3 gap-4 mb-4">
+          <a
+            href="/ViewProduct"
+            class="flex flex-col items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-gray-400 dark:text-gray-500 mb-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <p class="text-xl text-gray-400 dark:text-gray-500">
+              View Products
+            </p>
           </a>
-          <a href="/addproduct" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">Add products</p>
+          <a
+            href="/addproduct"
+            class="flex flex-col items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-gray-400 dark:text-gray-500 mb-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            <p class="text-xl text-gray-400 dark:text-gray-500">Add Products</p>
           </a>
-          <a href="/RemoveProducts" className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">Remove Product </p>
+          <a
+            href="/RemoveProducts"
+            class="flex flex-col items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-gray-400 dark:text-gray-500 mb-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+            <p class="text-xl text-gray-400 dark:text-gray-500">
+              Remove Products
+            </p>
           </a>
         </div>
-        <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-          <p className="text-2xl text-gray-400 dark:text-gray-500">Product Reviews</p>
+        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
+          <a
+            href="/ReviewProducts"
+            class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="none"
+              class="w-8 h-8 mr-2"
+            >
+              <path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm-1.5 10.5h-3v-1h3v-3h1v3h3v1h-3v3h-1v-3z" />
+            </svg>
+            <p class="text-2xl text-gray-400 dark:text-gray-500">
+              Product Reviews
+            </p>
+          </a>
         </div>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
-          <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">+</p>
-          </div>
       </div>
-   </div>
-</div>
+    </div>
   );
 }
 
