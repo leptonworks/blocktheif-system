@@ -21,3 +21,4 @@ export { default as RemoveProducts } from "../../pages/manufacturer/dashboardPag
 export { default as ReviewProducts } from "../../pages/manufacturer/dashboardPages/reviewProducts"
 export { default as ManuDashboard } from "../../pages/manufacturer/manuDashboard"
 export { default as Manulogin } from "../../pages/manufacturer/manuLogin"
+export { default as WebCam } from "../../pages/user/webCam"

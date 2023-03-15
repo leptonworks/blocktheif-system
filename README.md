@@ -7,6 +7,11 @@ Packages    -    Client   -  npm install
 
                             npm i @mui/icons-material
                             npm install recharts
+                            npm install react-modal
+                            npm install react-number-format
+npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
+npm install @mui/icons-material@latest
+
 
 
                 Contract          -  npx hardhat run scripts/sample-script.js --network localhost 

@@ -5,75 +5,54 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { groupBy } from "lodash";
 
-
 const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
 const ABI = Product.abi;
-const provider = new ethers.providers.JsonRpcProvider(
-  "http://localhost:8545"
-);
+const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 const signer = provider.getSigner();
 const contract = new ethers.Contract(contractAddress, ABI, signer);
 
 function Overview() {
   const [productCount, setProductCount] = useState(0);
-  const [productIDs, setProductIDs] = useState([]);
-  const [productTimestamps, setProductTimestamps] = useState([]);
   const [productIds, setProductIds] = useState([]);
-
-
-  useEffect(() => {
-    async function getProductTimestamps() {
-      const timestamps = [];
-      for (let i = 0; i < productIds.length; i++) {
-        const productData = await contract.getProduct(productIds[i]);
-        const timestamp = productData[5].toNumber();
-        timestamps.push(timestamp);
-      }
-      setProductTimestamps(timestamps);
-    }
-  
-    getProductTimestamps();
-  }, [productIds]);
-  
+  const [productPrices, setProductPrices] = useState([]);
 
   useEffect(() => {
-    async function getProductIds() {
+    async function getProductData() {
       const count = await contract.getProductCount();
       setProductCount(count.toString());
-      const ids = [];
-      for (let i = 1; i <= count.toNumber(); i++) {
-        ids.push(i);
-        console.log("Product ID:", i);
-      }
-      setProductIDs(ids);
-    
+
       const productIds = await contract.getProductIds();
       const idArray = productIds.map((id) => id.toNumber());
       setProductIds(idArray);
+
+      const prices = [];
+      for (const id of idArray) {
+        const product = await contract.getProduct(id);
+        const price = product[4].toString();
+        prices.push(price);
+      }
+      setProductPrices(prices);
     }
-    getProductIds();
+    getProductData();
   }, []);
 
- // Group timestamps by day and convert to an array of objects with day as label and count as data
- const dailyProductCounts = Object.entries(
-  groupBy(productTimestamps, (timestamp) =>
-    new Date(timestamp * 1000).toISOString().slice(0, 10)
-  )
-).map(([day, timestamps]) => ({
-  label: day,
-  data: timestamps.length,
-}));
+  const dailyProductPrices = Object.entries(
+    groupBy(productPrices, (price) => price)
+  ).map(([price, prices]) => ({
+    label: `$${price}`,
+    data: prices.length,
+  }));
 
-const data = {
-  labels: dailyProductCounts.map((d) => d.label),
-  datasets: [
-    {
-      label: "Products",
-      data: dailyProductCounts.map((d) => d.data),
-      backgroundColor: "#36A2EB",
-    },
-  ],
-};
+  const data = {
+    labels: dailyProductPrices.map((d) => d.label),
+    datasets: [
+      {
+        label: "Product Prices",
+        data: dailyProductPrices.map((d) => d.data),
+        backgroundColor: "#36A2EB",
+      },
+    ],
+  };
 
   return (
     <div className="p-8">
@@ -84,27 +63,23 @@ const data = {
           <p className="text-gray-600">{productCount}</p>
         </div>
         <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-bold mb-2">Product Timestamps</h2>
+          <h2 className="text-lg font-bold mb-2">Product Prices</h2>
           <ul className="list-disc list-inside text-gray-600">
-            {productIDs.map((id, index) => (
-              <li key={id}>
-                {new Date(productTimestamps[index] * 1000).toLocaleString()}
-              </li>
+            {productIds.map((id, index) => (
+              <li key={id}>${productPrices[index]}</li>
             ))}
           </ul>
         </div>
       </div>
       <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Product IDs</h1>
-      <ul className="list-disc list-inside text-gray-600">
-        {productIds.map((id) => (
-          <li key={id}>{id}</li>
-        ))}
-      </ul>
-    </div>
-    <div>
-     <Bar data={data} />;
-    </div>
+        <h1 className="text-2xl font-bold mb-4">Product Prices</h1>
+        <Bar
+          data={data}
+          options={{
+            height: 0,
+          }}
+        />{" "}
+      </div>
     </div>
   );
 }

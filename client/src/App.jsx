@@ -16,7 +16,8 @@ import {
   Manulogin,
   ViewProduct,
   RemoveProducts,
-  ReviewProducts
+  ReviewProducts,
+  WebCam
 
 
   // ManuDashboard
@@ -42,6 +43,7 @@ const App = () => (
         <Route path="/ViewProduct" element={<ViewProduct />} />
         <Route path="/RemoveProducts" element={<RemoveProducts />} />
         <Route path="/ReviewProducts" element={<ReviewProducts />} />
+        <Route path="/WebCam" element={<WebCam />} />
 
 
 
