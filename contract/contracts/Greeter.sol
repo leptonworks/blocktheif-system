@@ -62,6 +62,14 @@ contract Product {
     function getProductCount() public view returns (uint256) {
         return productCount;
     }
+    function authenticateProduct(uint256 id) public view returns (bool) {
+        for (uint i = 0; i < productIds.length; i++) {
+            if (productIds[i] == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     function getProductIds() public view returns (uint256[] memory) {
         return productIds;

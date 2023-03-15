@@ -135,5 +135,18 @@ describe("Product", function () {
     expect(productIDs[0]).to.equal(id1);
     expect(productIDs[1]).to.equal(id2);
   });
-  
+  it("should authenticate a product ID", async function () {
+    const id = 1;
+    const name = "Product 1";
+    const emei = "1234567890";
+    const color = "Red";
+    const size = "Large";
+    const price = 100;
+    await product.addProduct(id, name, emei, color, size, price);
+
+    const result = await product.authenticateProduct(id);
+
+    expect(result).to.be.true;
+});
+
 });
