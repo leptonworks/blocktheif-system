@@ -135,18 +135,30 @@ describe("Product", function () {
     expect(productIDs[0]).to.equal(id1);
     expect(productIDs[1]).to.equal(id2);
   });
-  it("should authenticate a product ID", async function () {
-    const id = 1;
-    const name = "Product 1";
-    const emei = "1234567890";
-    const color = "Red";
-    const size = "Large";
-    const price = 100;
-    await product.addProduct(id, name, emei, color, size, price);
 
-    const result = await product.authenticateProduct(id);
+it("should get authentication counter", async function () {
+  const id1 = 2131;
+  const name1 = "Product 1";
+  const emei1 = "1234567890";
+  const color1 = "Red";
+  const size1 = "Large";
+  const price1 = 100;
 
-    expect(result).to.be.true;
+  const id2 = 12322;
+  const name2 = "Product 2";
+  const emei2 = "0987654321";
+  const color2 = "Blue";
+  const size2 = "Medium";
+  const price2 = 50;
+
+  await product.addProduct(id1, name1, emei1, color1, size1, price1);
+  await product.addProduct(id2, name2, emei2, color2, size2, price2);
+ await product.authenticateProduct(id1);
+ await product.authenticateProduct(id2);
+ const result = await product.getAuthenticationCounter();
+
+ expect(result).to.equal(2);
+
 });
 
 });
