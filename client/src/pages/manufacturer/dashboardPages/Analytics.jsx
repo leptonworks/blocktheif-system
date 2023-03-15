@@ -1,33 +1,23 @@
 import React, { useState, useEffect } from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 import { Bar } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import "chartjs-plugin-datalabels";
+import { ethers } from "ethers";
+import Product from "../../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 
 const options = {
   responsive: true,
   plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
+    datalabels: {
       display: true,
-      text: "Chart.js Bar Chart",
+      color: "black",
+    },
+    legend: {
+      display: false,
+    },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
     },
   },
 };
@@ -37,6 +27,7 @@ function Analytics() {
   const [productAuthAttempts, setProductAuthAttempts] = useState([]);
   const [productAuthSuccessRate, setProductAuthSuccessRate] = useState([]);
   const [overallSuccessRate, setOverallSuccessRate] = useState(0);
+  const [authCount, setAuthCount] = useState(0);
 
   useEffect(() => {
     async function getProductDetails() {
@@ -92,51 +83,71 @@ function Analytics() {
 
     getProductDetails();
   }, []);
+  
+  useEffect(() => {
+    async function getAuthCount() {
+      const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
+      const ABI = Product.abi;
+      const provider = new ethers.providers.JsonRpcProvider(
+        "http://localhost:8545"
+      );
+      const contract = new ethers.Contract(contractAddress, ABI, provider);
+    
+      // Replace the ID below with the ID of the product you want to get the authentication count for
+      const productId = 1;
+    
+      // Call the getAuthenticationCounter function on the smart contract
+      const authCount = await contract.getAuthenticationCounter();
+      console.log("Here",authCount.toNumber());
+    
+      setAuthCount(authCount.toNumber());
+    }
+    
+    getAuthCount();
+  }, []);
 
   const labels = productData.map((product) => product.name);
-
+  
   const data = {
-    labels,
-    datasets: [
-      {
-        label: "Authentication Attempts",
-        data: productAuthAttempts,
-        backgroundColor: "rgba(255, 99, 132, 0 )",
-      },
-      {
-        label: "Authentication Success Rate",
-        data: productAuthSuccessRate,
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
+  labels,
+  datasets: [
+  {
+  label: "Authentication Success Rate",
+  data: productAuthSuccessRate,
+  backgroundColor: "rgba(53, 162, 235, 0.5)",
+  },
+  {
+  label: "Authentication Rate",
+  data: productAuthAttempts,
+  backgroundColor: "rgba(255, 99, 132, 0.5)",
+  },
+  ],
   };
-
+  
   return (
-  <div className="bg-gray-300">
-  <div className="mt-16 container mx-auto p-8">
+  <div className="bg-gray-300 min-h-screen">
+  <div className="container mx-auto p-8">
   <h1 className="text-4xl font-bold mb-8">Analytics Dashboard</h1>
-  {/* Pageviews chart */}
-  <h2 className="text-2xl font-bold mb-4">Product Authentication Statistics</h2>
-  <div class="w-128 h-64">
+  <h2 className="text-2xl font-bold mb-4">
+  Product Authentication Statistics
+  </h2>
+  <div className="w-full h-96">
   <Bar options={options} data={data} />
   </div>
-  </div>
-  <div className="container mx-auto">
-  <div className="flex justify-between">
-  <div className="w-1/2 pr-5">
-  <h2 className="text-lg font-bold mb-3">
+  <div className="mt-8">
+  <h2 className="text-2xl font-bold mb-4">
   Authentication Success Rate
   </h2>
-  <div className="bg-gray-100 px-4 py-2 rounded-md mb-3">
+  <div className="bg-gray-100 p-4 rounded-md mb-3">
   <div className="text-lg font-bold">{overallSuccessRate}%</div>
   <div className="text-gray-500">Overall success rate</div>
   </div>
   <div className="mb-5">
   {productData.map((product, index) => (
   <div
-                 key={product.id}
-                 className="flex justify-between items-center mb-2"
-               >
+               key={product.id}
+               className="flex justify-between items-center mb-2"
+             >
   <div className="text-lg font-bold">
   {productAuthSuccessRate[index]}%
   </div>
@@ -145,21 +156,31 @@ function Analytics() {
   ))}
   </div>
   </div>
-  <div className="w-1/2 pl-5">
-  <h2 className="text-lg font-bold mb-3">
-  Authentication Attempts by Product
+  <div className="mt-8">
+  <h2 className="text-2xl font-bold mb-4">
+  Authentication Rate
   </h2>
   <div className="mb-5">
   {productData.map((product, index) => (
   <div
-                 key={product.id}
-                 className="flex justify-between items-center mb-2"
-               >
-  <div>{productAuthAttempts[index]}</div>
+               key={product.id}
+               className="flex justify-between items-center mb-2"
+             >
+  <div className="text-lg font-bold">
+  {productAuthAttempts[index]}
+  </div>
   <div>{product.name}</div>
   </div>
   ))}
   </div>
+  </div>
+  <div className="mt-8">
+  <h2 className="text-2xl font-bold mb-4">
+  Authentication Count
+  </h2>
+  <div className="bg-gray-100 p-4 rounded-md mb-3">
+  <div className="text-lg font-bold">{authCount}</div>
+  <div className="text-gray-500">Total number of authentications</div>
   </div>
   </div>
   </div>
@@ -167,4 +188,4 @@ function Analytics() {
   );
   }
   
-  export default Analytics;
+  export default Analytics;    

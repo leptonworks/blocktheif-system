@@ -7,10 +7,11 @@ function WebCam() {
   const [data, setData] = useState('No result');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [isScanning, setIsScanning] = useState(true);
 
   const handleScan = async (result) => {
     if (result) {
-      setData(result.text); // extract the text property from the result object
+      setData(result.text);
       const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
       const signer = provider.getSigner();
       const contractAddress = '0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f';
@@ -18,8 +19,11 @@ function WebCam() {
       try {
         const productId = parseInt(result);
         const [name, emei, color, size, price] = await contract.getProduct(productId);
+        const authenticate = await contract.authenticateProduct(productId);
+        console.log("Here",authenticate);
         setSuccessMessage(`Product name: ${name}, EMEI: ${emei}, color: ${color}, size: ${size}, price: ${ethers.utils.formatEther(price)} ETH`);
         setErrorMessage('');
+        setIsScanning(false); // Stop scanning after successful scan
       } catch (err) {
         console.error(err);
         setErrorMessage('Product not found. Please scan a valid QR code.');
@@ -35,11 +39,17 @@ function WebCam() {
   return (
     <div className="flex justify-center items-center">
       <div className="w-full max-w-lg rounded-md overflow-hidden shadow-md">
-        <QrReader
-          onResult={handleScan}
-          onError={handleError}
-          className="w-full h-full"
-        />
+        {isScanning ? (
+          <QrReader
+            onResult={handleScan}
+            onError={handleError}
+            className="w-full h-full"
+          />
+        ) : (
+          <div className="bg-gray-300 p-4 text-center">
+            Scan completed. Please check the product information below.
+          </div>
+        )}
         {errorMessage && (
           <div className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-3'>
             {errorMessage}

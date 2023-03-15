@@ -76,6 +76,7 @@ function Overview() {
         <Bar
           data={data}
           options={{
+            maintainAspectRatio: true,
             height: 0,
           }}
         />{" "}

@@ -14,9 +14,12 @@ contract Product {
     mapping(uint256 => ProductData) private products;
     uint256[] private productIds;
     uint256 private productCount = 0;
+    uint256 private authenticationCounter = 0;
 
     event ProductAdded(uint256 id, string name, string emei, string color, string size, uint256 price, uint256 timestamp);
     event ProductRemoved(uint256 id);
+    event ProductAuthenticated(uint256 id);
+
 
     function addProduct(uint256 id, string memory name,string memory emei,string memory color,string memory size, uint256 price) public {
         require(products[id].price == 0, "Product with the same ID already exists");
@@ -62,14 +65,22 @@ contract Product {
     function getProductCount() public view returns (uint256) {
         return productCount;
     }
-    function authenticateProduct(uint256 id) public view returns (bool) {
+
+    function authenticateProduct(uint256 id) public returns (bool) {
         for (uint i = 0; i < productIds.length; i++) {
             if (productIds[i] == id) {
+                authenticationCounter++;
                 return true;
             }
         }
         return false;
     }
+
+
+    function getAuthenticationCounter() public view returns (uint256) {
+        return authenticationCounter;
+    }
+
 
     function getProductIds() public view returns (uint256[] memory) {
         return productIds;
