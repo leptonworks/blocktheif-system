@@ -11,9 +11,11 @@ Packages    -    Client   -  npm install
                             npm install react-number-format
 npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
 npm install @mui/icons-material@latest
+npm i react-qr-reader
+
 
 
 
                 Contract          -  npx hardhat run scripts/sample-script.js --network localhost 
                                      npx hardhat test
-                                     npx node
+                                     npx hardhat node
