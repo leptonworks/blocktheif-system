@@ -10,6 +10,7 @@ import {
   ManufacturerPage,
   AboutUsPage,
   LoginPage,
+  Signup,
   ReviewPage,
   AddProduct,
   ManuDashboard,
@@ -18,7 +19,8 @@ import {
   RemoveProducts,
   ReviewProducts,
   WebCam,
-  ML
+  ML,
+  
 
 
   // ManuDashboard
@@ -33,7 +35,6 @@ const App = () => (
         {/* <Navbar /> */}
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
-
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
         <Route path="/Login" element={<LoginPage />} />

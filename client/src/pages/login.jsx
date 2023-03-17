@@ -1,60 +1,71 @@
-import React from 'react'
+import React from "react";
+import { Link,  } from "react-router-dom";
+import { Form, Alert } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import GoogleButton from "react-google-button";
 
 
 
-export default function login() {
-  return (
-    
-    <section className="h-screen grid md:grid-cols-2">
+const login = () => {
+
+    return (
+  
+    <section className="h-screen grid ">
       
       {/*left side */}
 
       <div className='bg-gray-300 flex flex-col justify-center'>
-            <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
-                <h2 className='text-4xl dark:text-white font-bold text-center'>LOGIN</h2>
-                <div className='flex flex-col text-gray-400 py-2'>
-                    <label>Username</label>
-                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" />
-                </div>
-                <div className='flex flex-col text-gray-400 py-2'>
-                    <label>Password</label>
-                    <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" />
-                </div>
-                <div className='flex justify-between text-gray-400 py-2'>
-                    <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
-                    <p>Forgot Password</p>
-                </div>
-                <button className='w-full my-5 py-2 bg-[#2e47a5] shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>LOGIN</button>
+            <div className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
+                
+            <div className="p-4 box">
+        <h2 className="mb-3 text-white">Auth Login</h2>
 
-            </form>
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Control
+              type="email"
+              placeholder="Email address"
+
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              type="password"
+              placeholder="Password"
+
+            />
+          </Form.Group>
+
+          <div className="d-grid gap-2">
+            <Button variant="primary" type="Submit" className="text-white">
+              Log In
+            </Button>
+          </div>
+        </Form>
+        <hr />
+        <div>
+          <GoogleButton
+            className="g-btn"
+            type="dark"
+
+          />
+        </div>
+      </div>
+      <div className="p-4 box mt-3 text-center text-white">
+        Don't have an account? <Link to="/Signup">Sign up</Link>
+      </div>
+
+
+                
+
+            </div>
         </div>
 
       
       {/* <div className="w-full h-full bg-black text-center md:h-screen"> */}
    
           
-            
-              
-            <div className='bg-[#1E1E1E] flex flex-col justify-center'>
-            <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
-                <h2 className='text-4xl dark:text-white font-bold text-center'>LOGIN</h2>
-                <div className='flex flex-col text-gray-400 py-2'>
-                    <label>Username</label>
-                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" />
-                </div>
-                <div className='flex flex-col text-gray-400 py-2'>
-                    <label>Password</label>
-                    <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" />
-                </div>
-                <div className='flex justify-between text-gray-400 py-2'>
-                    <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
-                    <p>Forgot Password</p>
-                </div>
-                <button className='w-full my-5 py-2 bg-[#2e47a5] shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>LOGIN</button>
-
-            </form>
-        </div>
-
 
 
               
@@ -68,3 +79,6 @@ export default function login() {
 
   )
 }
+
+
+export default login;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { QrReader } from 'react-qr-reader';
 import { ethers } from 'ethers';
 import greeter from '../../../../contract/artifacts/contracts/Greeter.sol/Product.json';
@@ -8,6 +8,7 @@ function WebCam() {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isScanning, setIsScanning] = useState(true);
+
 
   const handleScan = async (result) => {
     if (result) {

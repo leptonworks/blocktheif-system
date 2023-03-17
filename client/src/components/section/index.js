@@ -14,6 +14,7 @@ export { default as WebCamPage } from "../../pages/user/webCam";
 export { default as ManufacturerPage } from "../../pages/manufacturer/manuacturer";
 export { default as AboutUsPage } from "../../pages/aboutUs";
 export { default as LoginPage } from "../../pages/login";
+export { default as Signup } from "../../pages/Signup";
 export { default as ReviewPage } from "../../pages/review";
 export { default as AddProduct } from "../../pages/manufacturer/addProduct"
 export { default as ViewProduct } from "../../pages/manufacturer/dashboardPages/viewProducts"

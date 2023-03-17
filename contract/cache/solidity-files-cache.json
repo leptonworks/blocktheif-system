@@ -1,79 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/himashaherath/Desktop/P_001/002/blocktheif-system/contract/contracts/Greeter.sol": {
-      "lastModificationDate": 1678574440944,
-      "contentHash": "533455b4bf8ddc423c1f2572a8a43d85",
-      "sourceName": "contracts/Greeter.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Product"
-      ]
-    },
-    "/Users/himashaherath/Desktop/P_001/003/blocktheif-system/contract/contracts/Greeter.sol": {
-      "lastModificationDate": 1678622738600,
-      "contentHash": "93e6d7a40b66e1332952bfbfebe32a57",
-      "sourceName": "contracts/Greeter.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Product"
-      ]
-    },
-    "/Users/himashaherath/Desktop/P_001/004/blocktheif-system/contract/contracts/Greeter.sol": {
-      "lastModificationDate": 1678867129845,
-      "contentHash": "a07b28be3074c345e64764da012f9a24",
+    "G:\\SDGP Blockthief\\blocktheif-system\\contract\\contracts\\Greeter.sol": {
+      "lastModificationDate": 1678976563818,
+      "contentHash": "8c1b8684edb8a47ffbd35d5e63a64e0f",
       "sourceName": "contracts/Greeter.sol",
       "solcConfig": {
         "version": "0.8.0",
