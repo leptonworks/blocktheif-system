@@ -1,5 +1,5 @@
 import React from "react";
-import { Link,  } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
@@ -59,8 +59,8 @@ const login = () => {
 
                 
 
-            </div>
-        </div>
+    </div>
+</div>
 
       
       {/* <div className="w-full h-full bg-black text-center md:h-screen"> */}

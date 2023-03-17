@@ -36,4 +36,10 @@ const Signup = () => {
         </Form>
       </div>
       <div className="p-4 box mt-3 text-center">
-        Already have an account? 
+        Already have an account? <Link to="/">Log In</Link>
+      </div>
+    </>
+  );
+};
+
+export default Signup;
