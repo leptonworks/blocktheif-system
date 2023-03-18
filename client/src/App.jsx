@@ -22,6 +22,7 @@ import {
   ML,
   UserDashboard,
   History,
+  ProductList
 
 
   // ManuDashboard
@@ -57,6 +58,7 @@ const App = () => (
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/History" element={<History />} />
+        <Route path="/ProductList" element={<ProductList />} />
 
 
 
