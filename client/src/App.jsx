@@ -20,19 +20,24 @@ import {
   ReviewProducts,
   WebCam,
   ML,
-  
+
 
 
   // ManuDashboard
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 // import ScanQR from "./pages/user/scanQR";
 
 const App = () => (
+
+
   <BrowserRouter>
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
         {/* <Navbar /> */}
+ 
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
@@ -51,6 +56,7 @@ const App = () => (
 
 
 
+
         <Route
           path="/"
           element={
@@ -65,9 +71,11 @@ const App = () => (
           }
         />
       </Routes>
+
     </div>
     </div>
   </BrowserRouter>
+
 );
 
 export default App;

@@ -11,6 +11,8 @@ export { default as Loader } from "./Loader";
 // PAGES
 export { default as ScanQrPage } from "../../pages/user/scanQR";
 export { default as WebCamPage } from "../../pages/user/webCam";
+
+
 export { default as ManufacturerPage } from "../../pages/manufacturer/manuacturer";
 export { default as AboutUsPage } from "../../pages/aboutUs";
 export { default as LoginPage } from "../../pages/login";
