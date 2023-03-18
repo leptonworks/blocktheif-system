@@ -9,8 +9,10 @@ export { default as Manufacturer } from "./manuSection";
 export { default as Loader } from "./Loader";
 
 // PAGES
+
 export { default as ScanQrPage } from "../../pages/user/scanQR";
 export { default as WebCamPage } from "../../pages/user/webCam";
+
 
 
 export { default as ManufacturerPage } from "../../pages/manufacturer/manuacturer";
@@ -23,6 +25,12 @@ export { default as ViewProduct } from "../../pages/manufacturer/dashboardPages/
 export { default as RemoveProducts } from "../../pages/manufacturer/dashboardPages/removeProducts"
 export { default as ReviewProducts } from "../../pages/manufacturer/dashboardPages/reviewProducts"
 export { default as ManuDashboard } from "../../pages/manufacturer/manuDashboard"
+
+
+export { default as UserDashboard } from "../../pages/user/userDashboard"
+export { default as History } from "../../pages/user/history"
+
+
 export { default as Manulogin } from "../../pages/manufacturer/manuLogin"
 export { default as WebCam } from "../../pages/user/webCam"
 export { default as ML } from "../../pages/ML"

@@ -20,7 +20,8 @@ import {
   ReviewProducts,
   WebCam,
   ML,
-  
+  UserDashboard,
+  History,
 
 
   // ManuDashboard
@@ -52,8 +53,14 @@ const App = () => (
         <Route path="/ReviewProducts" element={<ReviewProducts />} />
         <Route path="/WebCam" element={<WebCam />} />
         <Route path="/ML" element={<ML />} />
+        <Route path="/UserDashboard" element={<UserDashboard />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signup" element={<Signup />} />
+        <Route path="/History" element={<History />} />
+
+
+
+
 
 
 
