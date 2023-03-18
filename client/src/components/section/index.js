@@ -29,6 +29,7 @@ export { default as ManuDashboard } from "../../pages/manufacturer/manuDashboard
 
 export { default as UserDashboard } from "../../pages/user/userDashboard"
 export { default as History } from "../../pages/user/history"
+export { default as ProductList } from "../../pages/user/productList"
 
 
 export { default as Manulogin } from "../../pages/manufacturer/manuLogin"
