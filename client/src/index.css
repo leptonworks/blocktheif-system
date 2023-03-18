@@ -78,6 +78,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.sidebar {
+  transition: all 0.4s ease-in-out;
+}
+
+.sidebar-collapsed .menu-item-text {
+  display: none;
+}
+
 
 @tailwind base;
 @tailwind components;

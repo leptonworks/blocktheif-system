@@ -20,8 +20,6 @@ import {
   ReviewProducts,
   WebCam,
   ML,
-  
-
 
   // ManuDashboard
 } from "./components/section";
@@ -47,6 +45,7 @@ const App = () => (
         <Route path="/ReviewProducts" element={<ReviewProducts />} />
         <Route path="/WebCam" element={<WebCam />} />
         <Route path="/ML" element={<ML />} />
+        <Route path="/Signup" element={<Signup />} />
         <Route path="/Signup" element={<Signup />} />
 
 

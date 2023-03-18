@@ -55,6 +55,7 @@ function Overview() {
   };
 
   return (
+    <div>
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Overview</h1>
       <div className="grid grid-cols-2 gap-4">
@@ -73,14 +74,11 @@ function Overview() {
       </div>
       <div className="p-8">
         <h1 className="text-2xl font-bold mb-4">Product Prices</h1>
-        <Bar
-          data={data}
-          options={{
-            maintainAspectRatio: true,
-            height: 0,
-          }}
-        />{" "}
+        <div className="w-full h-56">
+        <Bar data={data}/>
       </div>
+      </div>
+    </div>
     </div>
   );
 }
