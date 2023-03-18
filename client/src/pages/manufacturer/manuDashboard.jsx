@@ -88,7 +88,7 @@ function ManuDashboard() {
   };
 
   return (
-    <div>
+    <div className="nav-spacing">
       <div className="min-h-screen bg-gray-100 flex">
         <div
           onMouseEnter={toggleSidebar}

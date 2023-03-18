@@ -37,7 +37,7 @@ const App = () => (
   <BrowserRouter>
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
-        {/* <Navbar /> */}
+        <Navbar />
  
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />

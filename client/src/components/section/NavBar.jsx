@@ -23,7 +23,7 @@ const NavBar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
-    <nav className="bg-[#1E1E1E] w-full flex md:justify-center justify-between items-center p-4 fixed ">
+    <nav className="bg-[#1E1E1E] w-full flex md:justify-center justify-between items-center p-4 fixed z-20">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <Link to="/">
           <p className="font-bold text-white">BLOCK THIEF</p>
