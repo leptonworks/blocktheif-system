@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 import "chartjs-plugin-datalabels";
 import { ethers } from "ethers";
 import Product from "../../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
@@ -28,6 +28,7 @@ function Analytics() {
   const [productAuthSuccessRate, setProductAuthSuccessRate] = useState([]);
   const [overallSuccessRate, setOverallSuccessRate] = useState(0);
   const [authCount, setAuthCount] = useState(0);
+
 
   useEffect(() => {
     async function getProductDetails() {
@@ -75,15 +76,24 @@ function Analytics() {
       setProductAuthAttempts(authAttempts);
       setProductAuthSuccessRate(authSuccessRate);
 
-      const totalAuthAttempts = authAttempts.reduce((total, attempts) => total + attempts, 0);
-      const totalAuthSuccess = authAttempts.reduce((total, attempts, index) => total + ((attempts * authSuccessRate[index]) / 100), 0);
-      const successRate = totalAuthAttempts > 0 ? Math.round((totalAuthSuccess / totalAuthAttempts) * 100) : 0;
+      const totalAuthAttempts = authAttempts.reduce(
+        (total, attempts) => total + attempts,
+        0
+      );
+      const totalAuthSuccess = authAttempts.reduce(
+        (total, attempts, index) =>
+          total + (attempts * authSuccessRate[index]) / 100,
+        0
+      );
+      const successRate = totalAuthAttempts > 0
+        ? Math.round((totalAuthSuccess / totalAuthAttempts) * 100)
+        : 0;
       setOverallSuccessRate(successRate);
     }
 
     getProductDetails();
   }, []);
-  
+
   useEffect(() => {
     async function getAuthCount() {
       const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
@@ -92,100 +102,98 @@ function Analytics() {
         "http://localhost:8545"
       );
       const contract = new ethers.Contract(contractAddress, ABI, provider);
-    
-      // Replace the ID below with the ID of the product you want to get the authentication count for
-      const productId = 1;
-    
-      // Call the getAuthenticationCounter function on the smart contract
-      const authCount = await contract.getAuthenticationCounter();
-      console.log("Here",authCount.toNumber());
-    
-      setAuthCount(authCount.toNumber());
-    }
-    
-    getAuthCount();
-  }, []);
 
-  const labels = productData.map((product) => product.name);
-  
-  const data = {
-  labels,
-  datasets: [
-  {
-  label: "Authentication Success Rate",
-  data: productAuthSuccessRate,
-  backgroundColor: "rgba(53, 162, 235, 0.5)",
-  },
-  {
-  label: "Authentication Rate",
-  data: productAuthAttempts,
-  backgroundColor: "rgba(255, 99, 132, 0.5)",
-  },
-  ],
-  };
-  
-  return (
-  <div className="bg-gray-300 min-h-screen">
-  <div className="container mx-auto p-8">
+  // Call the getAuthenticationCounter function on the smart contract
+  const authCount = await contract.getAuthenticationCounter();
+  setAuthCount(authCount.toNumber());
+}
+
+getAuthCount();
+}, []);
+
+const labels = productData.map((product) => product.name);
+
+const data = {
+labels,
+datasets: [
+{
+label: "Authentication Success Rate",
+data: productAuthSuccessRate,
+backgroundColor: "rgba(53, 162, 235, 0.5)",
+},
+{
+label: "Authentication Rate",
+data: productAuthAttempts,
+backgroundColor: "rgba(255, 99, 132, 0.5)",
+},
+],
+};
+
+const pieData = {
+labels,
+datasets: [
+{
+data: productAuthSuccessRate,
+backgroundColor: productData.map(
+() => "#" + Math.floor(Math.random() * 16777215).toString(16)
+),
+},
+],
+};
+
+const sortedProductsBySuccessRate = productData
+.map((product, index) => ({
+...product,
+successRate: productAuthSuccessRate[index],
+}))
+.sort((a, b) => b.successRate - a.successRate)
+.slice(0, 3);
+
+return ( <div className="bg-gray-100 min-h-screen">
+<div className="container mx-auto p-8">
   <h1 className="text-4xl font-bold mb-8">Analytics Dashboard</h1>
   <h2 className="text-2xl font-bold mb-4">
-  Product Authentication Statistics
+    Product Authentication Statistics
   </h2>
-  <div className="w-full h-96">
-  <Bar options={options} data={data} />
+  <div className="w-full h-96 bg-white p-4 rounded-lg">
+    <Bar options={options} data={data} />
   </div>
   <div className="mt-8">
-  <h2 className="text-2xl font-bold mb-4">
-  Authentication Success Rate
-  </h2>
-  <div className="bg-gray-100 p-4 rounded-md mb-3">
-  <div className="text-lg font-bold">{overallSuccessRate}%</div>
-  <div className="text-gray-500">Overall success rate</div>
-  </div>
-  <div className="mb-5">
-  {productData.map((product, index) => (
-  <div
-               key={product.id}
-               className="flex justify-between items-center mb-2"
-             >
-  <div className="text-lg font-bold">
-  {productAuthSuccessRate[index]}%
-  </div>
-  <div>{product.name}</div>
-  </div>
-  ))}
-  </div>
+    <h2 className="text-2xl font-bold mb-4">
+      Authentication Success Rate Distribution
+    </h2>
+    <div className="w-full h-96 bg-white p-4 rounded-lg">
+      <Pie data={pieData} />
+    </div>
   </div>
   <div className="mt-8">
-  <h2 className="text-2xl font-bold mb-4">
-  Authentication Rate
-  </h2>
-  <div className="mb-5">
-  {productData.map((product, index) => (
-  <div
-               key={product.id}
-               className="flex justify-between items-center mb-2"
-             >
-  <div className="text-lg font-bold">
-  {productAuthAttempts[index]}
-  </div>
-  <div>{product.name}</div>
-  </div>
-  ))}
-  </div>
+    <h2 className="text-2xl font-bold mb-4">
+      Top 3 Products with Highest Authentication Success Rate
+    </h2>
+    <div className="bg-white p-4 rounded-lg">
+      <ul className="list-disc list-inside text-gray-600">
+        {sortedProductsBySuccessRate.map((product) => (
+          <li key={product.id}>
+            {product.name} - {product.successRate}%
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
   <div className="mt-8">
-  <h2 className="text-2xl font-bold mb-4">
-  Authentication Count
-  </h2>
-  <div className="bg-gray-100 p-4 rounded-md mb-3">
-  <div className="text-lg font-bold">{authCount}</div>
-  <div className="text-gray-500">Total number of authentications</div>
+    <h2 className="text-2xl font-bold mb-4">
+      Authentication Count
+    </h2>
+    <div className="bg-white p-4 rounded-lg mb-3">
+      <div className="text-lg font-bold">{authCount}</div>
+      <div className="text-gray-500">
+        Total number of authentications
+      </div>
+    </div>
   </div>
   </div>
   </div>
-  </div>
-  );
-  }
-  
-  export default Analytics;    
+);
+}
+
+export default Analytics;

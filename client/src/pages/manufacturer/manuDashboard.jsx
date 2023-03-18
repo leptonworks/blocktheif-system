@@ -4,7 +4,7 @@ import Analytics from "./dashboardPages/Analytics";
 import ProductManagement from "./dashboardPages/ProductManagement";
 
 function ManuDashboard() {
-  const [activeMenuItem, setActiveMenuItem] = useState("lol");
+  const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   const navigation = [
@@ -76,10 +76,13 @@ function ManuDashboard() {
 
   const renderPage = () => {
     const activeItem = navigation.find((item) => item.id === activeMenuItem);
+    if (!activeItem) {
+      return <div>Page not found</div>; // fallback component
+    }
     const ActiveComponent = activeItem.component;
     return <ActiveComponent />;
   };
-
+  
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
