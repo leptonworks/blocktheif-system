@@ -10,7 +10,7 @@ function manuacturer() {
         Secure and Authenticate Your Products with Blockchain Technology
 
       </h2>
-      <div class="box-border h-auto w-auto p-4 border-4 border-blue-700 backdrop-blur-md bg-white/30 ...">
+      
       <h2 className="text-base text-gray-100  font-bold underline underline-offset-2 md:text-lg">Join our innovative platform to protect your brand and build customer trust</h2><br/>
       <p className="text-base text-sky-100 whitespace-normal italic   font-bold md:text-lg">
       "Since implementing the Fake Product Identification System, our brand reputation has improved significantly. Customers appreciate the added security and transparency, and we've seen a reduction in counterfeit products in the market." - John Smith, CEO of XYZ Company
@@ -23,7 +23,6 @@ function manuacturer() {
         >
           Join Now
         </a>
-      </div>
       </div>
       </div>
       </div>
