@@ -1,5 +1,5 @@
 import {
-  Navbar,
+  
   Hero,
   QR,
   Manufacturer,
@@ -9,8 +9,8 @@ import {
   ScanQrPage,
   ManufacturerPage,
   AboutUsPage,
-  LoginPage,
-  Signup,
+
+
   ReviewPage,
   AddProduct,
   ManuDashboard,
@@ -22,29 +22,40 @@ import {
   ML,
   UserDashboard,
   History,
-  ProductList
+  ProductList,
 
+  Home,
+  CustomNav,
+  Login,
+  Registration,
+  Logout
 
   // ManuDashboard
 } from "./components/section";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer,} from 'react-toastify';
+import { Protector } from "./helper";
 
 
 // import ScanQR from "./pages/user/scanQR";
 
+
+
 const App = () => (
+
+  
 
 
   <BrowserRouter>
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
-        <Navbar />
+
  
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
-        <Route path="/Login" element={<LoginPage />} />
+
         <Route path="/Reviews" element={<ReviewPage />} />
         <Route path="/AddProduct" element={<AddProduct />} />
         <Route path="/ManuDashboard" element={<ManuDashboard />} />
@@ -55,15 +66,18 @@ const App = () => (
         <Route path="/WebCam" element={<WebCam />} />
         <Route path="/ML" element={<ML />} />
         <Route path="/UserDashboard" element={<UserDashboard />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Signup" element={<Signup />} />
+
         <Route path="/History" element={<History />} />
         <Route path="/ProductList" element={<ProductList />} />
 
 
 
-
-
+        
+        <Route path="/Home" element={<Protector Component={Home} />} />
+        <Route path="/CustomNav" element={<CustomNav />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Registration" element={<Registration />} />
+        <Route path="/Logout" element={<Logout />} />
 
 
 
@@ -81,10 +95,12 @@ const App = () => (
           }
         />
       </Routes>
-
+      <ToastContainer/>
     </div>
     </div>
   </BrowserRouter>
+
+
 
 );
 

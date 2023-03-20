@@ -22,6 +22,42 @@ body {
 .nav-spacing {
   padding-top: 70px; /* Adjust this value to match the height of your navbar */
 }
+
+
+/* Nav */
+.custom-nav .collapse {
+  justify-content: flex-end;
+}
+/* End Nav */
+
+/* Home */
+.home {
+  margin-top: 30px;
+}
+
+/* End home */
+
+/* Login */
+.login {
+  min-height: 100vh;
+  align-items: center;
+
+}
+
+.login h6 {
+  margin-top: 15px;
+}
+
+
+/* Register */
+.register {
+  min-height: 100vh;
+  align-items: center;
+
+}
+/* End register */
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 // SECTIONS
 export { default as Navbar } from "./NavBar";
 export { default as Hero } from "./heroSection";
@@ -17,8 +20,8 @@ export { default as WebCamPage } from "../../pages/user/webCam";
 
 export { default as ManufacturerPage } from "../../pages/manufacturer/manuacturer";
 export { default as AboutUsPage } from "../../pages/aboutUs";
-export { default as LoginPage } from "../../pages/login";
-export { default as Signup } from "../../pages/Signup";
+
+
 export { default as ReviewPage } from "../../pages/review";
 export { default as AddProduct } from "../../pages/manufacturer/addProduct"
 export { default as ViewProduct } from "../../pages/manufacturer/dashboardPages/viewProducts"
@@ -32,6 +35,18 @@ export { default as History } from "../../pages/user/history"
 export { default as ProductList } from "../../pages/user/productList"
 
 
+
+
 export { default as Manulogin } from "../../pages/manufacturer/manuLogin"
-export { default as WebCam } from "../../pages/user/webCam"
+export { default as WebCam } from "../../pages/user/webCam" 
 export { default as ML } from "../../pages/ML"
+
+
+
+export { default as Home } from "../../pages/strapi/home"
+export { default as CustomNav } from "../../pages/strapi/customNav"
+export { default as Login } from "../../pages/strapi/login"
+export { default as Registration } from "../../pages/strapi/registration"
+export { default as Logout } from "../../pages/strapi/logout"
+
+

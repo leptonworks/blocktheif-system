@@ -21,10 +21,18 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Welcome = () => {
   return (
+
+    
     <section className="h-screen grid md:grid-cols-2">
       {/* <div className="w-full h-full bg-gray-300 text-center md:h-screen display-flex flex-center items-center">
         <img src={landingPageLogo} alt="logo" className="w-1/2" />
       </div> */}
+
+<button id="to-top-button" onclick="goToTop()" title="Go To Top"
+        class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold">&uarr;</button>
+
+
+
       <div className="bg-gray-300 flex items-center justify-center ">
         <img src={landingPageLogo}/>
       </div>
