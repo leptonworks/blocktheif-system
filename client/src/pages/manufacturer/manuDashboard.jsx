@@ -100,9 +100,9 @@ function ManuDashboard() {
           <div className="flex h-screen flex-col justify-between pt-2 pb-6">
             <div>
               <div className="w-max p-2.5">
-                <img
-                  src="https://tailus.io/images/logo.svg"
-                  className="w-32"
+              <img
+                  src="https://picsvg.com/svg/NeQgCP01.svg?v=21651"
+                  className="w-8"
                   alt=""
                 ></img>
               </div>
