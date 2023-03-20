@@ -23,6 +23,7 @@
     "chartjs-plugin-datalabels": "^2.2.0",
     "ethers": "^5.7.2",
     "firebase": "^9.18.0",
+    "jsqr": "^1.4.0",
     "qrcode": "^1.5.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

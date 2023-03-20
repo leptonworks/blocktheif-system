@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { QrReader } from "react-qr-reader";
 import { ethers } from "ethers";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
-// import jsQR from "jsqr-es6"; // Import jsQR-es6
+import jsQR from "jsqr";
 
 function WebCam() {
   const [data, setData] = useState("No result");
