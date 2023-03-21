@@ -12,7 +12,9 @@ Packages    -    Client   -  npm install
 npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
 npm install @mui/icons-material@latest
 npm i react-qr-reader
-
+npm i react-toastify
+npm i axios
+npm i reactstrap
 
 
 
