@@ -1,5 +1,5 @@
 import {
-  
+  Navbar,
   Hero,
   QR,
   Manufacturer,
@@ -28,7 +28,9 @@ import {
   CustomNav,
   Login,
   Registration,
-  Logout
+  Logout,
+
+  Profile
 
   // ManuDashboard
 } from "./components/section";
@@ -50,7 +52,7 @@ const App = () => (
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
 
- 
+      <Navbar />
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
@@ -79,7 +81,7 @@ const App = () => (
         <Route path="/Registration" element={<Registration />} />
         <Route path="/Logout" element={<Logout />} />
 
-
+        <Route path="/Profile" element={<Profile />} />
 
         <Route
           path="/"

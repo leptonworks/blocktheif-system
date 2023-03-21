@@ -50,3 +50,5 @@ export { default as Registration } from "../../pages/strapi/registration"
 export { default as Logout } from "../../pages/strapi/logout"
 
 
+export { default as Profile } from "../../pages/user/Profile"
+
