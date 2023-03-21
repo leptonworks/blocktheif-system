@@ -10,7 +10,6 @@ import {
   ManufacturerPage,
   AboutUsPage,
 
-
   ReviewPage,
   AddProduct,
   ManuDashboard,
@@ -28,9 +27,7 @@ import {
   CustomNav,
   Login,
   Registration,
-  Logout,
-
-  Profile
+  Logout
 
   // ManuDashboard
 } from "./components/section";
@@ -52,7 +49,7 @@ const App = () => (
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
 
-      <Navbar />
+ 
       <Routes>
         <Route path="/scanQR" element={<ScanQrPage />} />
         <Route path="/Manufacturer" element={<ManufacturerPage />} />
@@ -97,7 +94,7 @@ const App = () => (
           }
         />
       </Routes>
-      <ToastContainer/>
+      <ToastContainer className="nav-spacing"/>
     </div>
     </div>
   </BrowserRouter>

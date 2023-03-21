@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { ethers } from "ethers";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 import QRCode from "qrcode";
+import {  toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddProduct() {
   const [productName, setProductName] = useState("");
@@ -12,6 +14,9 @@ function AddProduct() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [qrImgUrl, setQrImgUrl] = useState("");
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
+
 
   const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
   const ABI = greeter.abi;
@@ -42,6 +47,9 @@ function AddProduct() {
   const handleAddProductSubmit = async (e) => {
     e.preventDefault();
     const productId = new Date().getTime(); // Generate unique ID using timestamp
+    console.log(productId);
+
+  
     try {
       await contract.addProduct(
         productId,
@@ -53,17 +61,24 @@ function AddProduct() {
       );
       const qr = await QRCode.toDataURL(productId.toString());
       setQrImgUrl(qr);
-      alert("Product added successfully!");
-      setSuccessMessage("Product added successfully!");
-      setErrorMessage("");
+      toast.success("Product added successfully!", {     toastId: 'success1',
+    });
     } catch (err) {
       console.error(err);
-      alert("Error: ID already exists. Please choose another ID");
-      setErrorMessage("Error: ID already exists. Please choose another ID.");
+      toast.error("Error: ID already exists. Please choose another ID.", {     toastId: 'fail1',
+    });
     }
   };
-
+  
+  useEffect(() => {
+    if (showErrorMessage) {
+      toast.error(errorMessage);
+      setShowErrorMessage(false);
+    }
+  }, [showErrorMessage, errorMessage]);
+  
   return (
+    <div className="nav-spacing">
     <div className="w-full min-h-screen bg-[#1E1E1E] flex items-center justify-center py-12">
       <div className="bg-gray-800 rounded-lg p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold text-white mb-6">Add Product</h2>
@@ -124,23 +139,16 @@ function AddProduct() {
           >
             Add Product
           </button>
-          {successMessage && (
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-3">
-              {successMessage}
-            </div>
-          )}
-          {errorMessage && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-3">
-              {errorMessage}
-            </div>
-          )}
         </form>
         {qrImgUrl && (
-          <div className="mt-4">
+          <div className="mt-4 flex justify-center">
+          <div className="bg-white p-4 rounded">
             <img src={qrImgUrl} alt="QR code" />
           </div>
+        </div>
         )}
       </div>
+    </div>
     </div>
     );
 }

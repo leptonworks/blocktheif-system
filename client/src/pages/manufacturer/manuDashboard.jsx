@@ -29,7 +29,7 @@ function ManuDashboard() {
       component: Overview,
     },
     {
-      name: "Product Management",
+      name: "Management",
       id: "productManagement",
       icon: (
         <svg
