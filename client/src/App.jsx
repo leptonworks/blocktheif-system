@@ -27,7 +27,8 @@ import {
   CustomNav,
   Login,
   Registration,
-  Logout
+  Logout,
+  Profile
 
   // ManuDashboard
 } from "./components/section";
