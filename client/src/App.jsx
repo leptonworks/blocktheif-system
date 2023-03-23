@@ -25,7 +25,8 @@ import {
   CustomNav,
   Login,
   Registration,
-  Logout
+  Logout,
+  Profile
 
   // ManuDashboard
 } from "./components/section";
@@ -39,6 +40,7 @@ const App = () => (
   <BrowserRouter>
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
+      <Navbar/>
         <Routes>
           <Route path="/scanQR" element={<ScanQrPage />} />
           <Route path="/Manufacturer" element={<ManufacturerPage />} />
