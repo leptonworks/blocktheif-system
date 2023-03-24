@@ -40,14 +40,11 @@ const App = () => (
   <BrowserRouter>
     <div className="min-h-screen">
       <div className="gradient-bg-welcome">
-
-      <Navbar />
+      <Navbar/>
         <Routes>
           <Route path="/scanQR" element={<ScanQrPage />} />
           <Route path="/Manufacturer" element={<ManufacturerPage />} />
           <Route path="/AboutUs" element={<AboutUsPage />} />
-
-          
 
           <Route path="/Reviews" element={<ReviewPage />} />
           <Route path="/AddProduct" element={<AddProduct />} />

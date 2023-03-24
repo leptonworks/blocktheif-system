@@ -26,17 +26,17 @@ function Manufacturer() {
     createManufacturer(formData);
   };
 
-  const submitFormData = async () => {
-  try {
-    const response = await axios.post(
-      "http://localhost:1337/manufacturer-registration",
-      formData
-    );
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
+  const createManufacturer = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:1337/manufacturer-registration",
+        data
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
   return (

@@ -16,29 +16,14 @@ function qrSection() {
               <div className = "flex items-center justify-center">
                 <ScanButton />
               </div>
-
-        
-      </div>
-      <div className="col-span-1 text-center bg-gray-300 text-white font-bold py-32">
-        <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
+              <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
           "Empower yourself with the assurance of authenticity. Scan your
           products with Blockthief's QR code scanner."
         </p>
       </div>
-
-      
-
-
-
     </section>
-
-    
-
-
   );
 }
-
-
 
 
 export default qrSection;

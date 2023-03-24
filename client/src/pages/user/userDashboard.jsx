@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import webCam from "./webCam";
 import ReviewML from "../ML";
-import Profile from "../strapi/profile";
+import Profile from "../user/profile";
 
 import ProductManagement from "../manufacturer/dashboardPages/ProductManagement";
 
