@@ -6,10 +6,11 @@ pipeline {
     tools {
         nodejs 'NodeJs'
     }
-    stage('Prepare') {
+
+    stages {
+            stage('Prepare') {
     sh "npm install -g yarn"
     }
-    stages {
         stage('Install Dependencies') {
             steps {
                 dir('client') {
