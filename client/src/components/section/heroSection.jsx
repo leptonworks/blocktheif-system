@@ -50,52 +50,40 @@ const Welcome = () => {
       &uarr;
     </button>
   )}
-
-  
-
   return (
-    <section className="h-screen grid md:grid-cols-2">
-      <div className="bg-gradient-to-br from-gray-800 to-green-900 flex items-center justify-center">
-        <img
-          src={landingPageLogo}
-          className="animate-spin-slow"
-          alt="Landing Page Logo"
-        />
-      </div>
-      <div className="col-span-1 w-full h-full text-center bg-[#141414] py-32 flex items-center justify-center">
-        <div className="flex w-full justify-center items-center">
-          <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-            <div className="flex-1 flex-col md:mr-10">
-              <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-                Secure Your Products <br /> With Block Thief
-              </h1>
-              <div className="flex items-center justify-center">
-                <p className="mt-5 text-white font-light md:w-9/12 w-full text-base">
-                  "Eliminate counterfeit products with our advanced
-                  blockchain-based authentication system. Our tamper-proof and
-                  easily verifiable solution ensures product authenticity.
-                  Protect your brand, build consumer trust and secure your
-                  supply chain with us."
-                </p>
-              </div>
-              <div className="flex items-center justify-center">
+    <div className="nav-spacing">
+  <section className="h-screen grid md:grid-cols-2">
+    <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
+      <div className="text-center md:text-left">
+        <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-gray-900 tracking-tighter f-f-i leading-tight text-heading-color">Secure Your Products With Block Theif</h1>
+        <div className="mx-auto md:mx-0 md:w-8/12">
+          <h2 className="py-4 md:py-8 text-gray-700 text-lg lg:text-2xl text-center">Eliminate counterfeit products with our advanced blockchain-based authentication system. Our tamper-proof and easily verifiable solution ensures product authenticity. Protect your brand, build consumer trust and secure your supply chain with us</h2>
+          <div className="w-full flex justify-center md:block">
+            <div className="text-center md:text-right">
+              <div style={{ display: 'inline-block' }}>
                 <ReadMore />
               </div>
             </div>
           </div>
         </div>
       </div>
-      {showToTopButton && (
-        <button
-          id="to-top-button"
-          onClick={goToTop}
-          title="Go To Top"
-          className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
-        >
-          &uarr;
-        </button>
-      )}
-    </section>
+    </div>
+    <div className="hidden md:block relative">
+      <img src="./images/landingPageLogo.png" alt="Your logo" className="absolute object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+    </div>
+    {showToTopButton && (
+      <button
+        id="to-top-button"
+        onClick={goToTop}
+        title="Go To Top"
+        className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
+      >
+        &uarr;
+      </button>
+    )}
+  </section>
+</div>
+
   );
 };
 

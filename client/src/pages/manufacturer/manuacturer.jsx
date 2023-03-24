@@ -40,7 +40,8 @@ function Manufacturer() {
 
 
   return (
-    <section className="h-screen grid md:grid-cols-2">
+    <div className="nav-spacing">
+      <section className="h-screen grid md:grid-cols-2">
       <div className="bg-gray-300 flex items-center justify-center">
         <form onSubmit={handleSubmit} className="w-full md:w-4/5 lg:w-3/4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
@@ -143,14 +144,43 @@ function Manufacturer() {
           </div>
         </form>
       </div>
-      <div className="col-span-1 w-full h-full text-center bg-[#1E1E1E] py-32 flex items-center justify-center">
-        <div className="flex w-full justify-center items-center">
-          <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-            {/* login */}
-          </div>
-        </div>
-      </div>
+      <div className="flex items-center justify-center">
+  <form className="mt-1 w-full max-w-md">
+    <div className="mb-4">
+      <input
+        type="text"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
+        className="appearance-none border rounded w-full py-2 px-3 bg-gray-200 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        placeholder="Email"
+        required
+      />
+    </div>
+    <div className="mb-4">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        value={formData.password}
+        onChange={handleInputChange}
+        className="appearance-none border rounded w-full py-2 px-3 bg-gray-200 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <button
+      className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+
     </section>
+    </div>
   );
 }
 
