@@ -3,7 +3,9 @@ pipeline {
     tools {
         nodejs 'NodeJs'
     }
-
+  environment {
+    PATH = "/opt/homebrew/bin/yarn"
+  }
     stages {
         stage('Install Dependencies') {
             steps {
