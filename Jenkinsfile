@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS'
+        nodejs 'NodeJs'
     }
     stages {
         stage('Install Dependencies') {
@@ -50,7 +50,7 @@ pipeline {
     }
     post {
         always {
-            // Actions to perform after the pipeline, e.g., send notifications, clean up workspace, etc.
+        cleanWs()
         }
     }
 }
