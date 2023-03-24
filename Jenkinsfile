@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    environment {
-        PATH = "/opt/homebrew/bin/yarn"
-    }
     tools {
         nodejs 'NodeJs'
+    }
+    stage('Prepare') {
+    sh "npm install -g yarn"
     }
     stages {
         stage('Install Dependencies') {
