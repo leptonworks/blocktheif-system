@@ -1,18 +1,10 @@
 pipeline {
     agent any
-        environment {
-        PATH = "/bin/sh"
-    }
     tools {
         nodejs 'NodeJs'
     }
 
     stages {
-            stage('Prepare') {
-                steps{
-                 sh "npm install -g yarn"
-                }
-                 }
         stage('Install Dependencies') {
             steps {
                 dir('client') {
