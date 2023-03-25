@@ -40,50 +40,41 @@ const Welcome = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  {showToTopButton && (
-    <button
-      id="to-top-button"
-      onClick={goToTop}
-      title="Go To Top"
-      className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
-    >
-      &uarr;
-    </button>
-  )}
   return (
-    <div className="nav-spacing">
-  <section className="h-screen grid md:grid-cols-2">
-    <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
-      <div className="text-center md:text-left">
-        <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-gray-900 tracking-tighter f-f-i leading-tight text-heading-color">Secure Your Products With Block Theif</h1>
-        <div className="mx-auto md:mx-0 md:w-8/12">
-          <h2 className="py-4 md:py-8 text-gray-700 text-lg lg:text-2xl text-center">Eliminate counterfeit products with our advanced blockchain-based authentication system. Our tamper-proof and easily verifiable solution ensures product authenticity. Protect your brand, build consumer trust and secure your supply chain with us</h2>
-          <div className="w-full flex justify-center md:block">
-            <div className="text-center md:text-right">
-              <div style={{ display: 'inline-block' }}>
-                <ReadMore />
+    <div className="nav-spacing bg-gradient-to-br from-[#04141f] to-[#0c2b4e]">
+      <section className="h-screen grid md:grid-cols-2">
+        <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-white tracking-tighter f-f-i leading-tight text-heading-color">Secure Your Products With Block Theif</h1>
+            <div className="mx-auto md:mx-0 md:w-8/12">
+              <h2 className="py-4 md:py-8 text-white text-lg lg:text-2xl text-center text-cyan-500">Eliminate counterfeit products with our advanced blockchain-based authentication system. Our tamper-proof and easily verifiable solution ensures product authenticity. Protect your brand, build consumer trust and secure your supply chain with us</h2>
+              <div className="w-full flex justify-center md:block">
+                <div className="text-center md:text-right">
+                  <div style={{ display: 'inline-block' }}>
+                    <ReadMore />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div className="hidden md:block relative">
+          <img src="./images/landingPageLogo.png" alt="Your logo" className="absolute object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+        </div>
+      </section>
+      {showToTopButton && (
+        <div>
+          <button
+            id="to-top-button"
+            onClick={goToTop}
+            title="Go To Top"
+            className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-0 drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
+          >
+            &uarr;
+          </button>
+        </div>
+      )}
     </div>
-    <div className="hidden md:block relative">
-      <img src="./images/landingPageLogo.png" alt="Your logo" className="absolute object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-    </div>
-    {showToTopButton && (
-      <button
-        id="to-top-button"
-        onClick={goToTop}
-        title="Go To Top"
-        className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
-      >
-        &uarr;
-      </button>
-    )}
-  </section>
-</div>
-
   );
 };
 
