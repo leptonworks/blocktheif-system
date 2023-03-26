@@ -26,7 +26,10 @@ import {
   Login,
   Registration,
   Logout,
-  Profile
+  Profile,
+  ManufacturerRegistration,
+  ManufacturerLogin,
+  ManufacturerProfile
 
   // ManuDashboard
 } from "./components/section";
@@ -67,6 +70,9 @@ const App = () => (
           <Route path="/Logout" element={<Logout />} />
 
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/ManufacturerRegistration" element={<ManufacturerRegistration />} />
+          <Route path="/ManufacturerLogin" element={<ManufacturerLogin />} />
+          <Route path="/ManufacturerProfile" element={<ManufacturerProfile />} />
 
           <Route
             path="/"
