@@ -48,6 +48,9 @@ export { default as CustomNav } from "../../pages/strapi/customNav"
 export { default as Login } from "../../pages/strapi/login"
 export { default as Registration } from "../../pages/strapi/registration"
 export { default as Logout } from "../../pages/strapi/logout"
+export { default as ManufacturerRegistration } from "../../pages/strapi/manufacturerRegistration"
+export { default as ManufacturerLogin } from "../../pages/strapi/manufacturerLogin"
+export { default as ManufacturerProfile } from "../../pages/strapi/manufacturerProfile"
 
 
 export { default as Profile } from "../../pages/user/Profile"

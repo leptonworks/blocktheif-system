@@ -20,6 +20,7 @@ function review() {
 
 
   return (
+    <div className="nav-spacing">
     <div className="flex w-full justify-left items-center bg-[#1E1E1E]">
       <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
         <div className="flex-1 flex flex-col justify-start items-start">
@@ -77,6 +78,7 @@ function review() {
 
         <div className="flex-1 flex flex-col justify-start items-center"></div>
       </div>
+    </div>
     </div>
   );
 }
