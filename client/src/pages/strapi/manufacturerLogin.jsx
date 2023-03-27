@@ -5,52 +5,55 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const initialManufacturer = {
-  identifier: "",
+  email: "",
   password: "",
 };
 
 const ManufacturerLogin = () => {
   const [manufacturer, setManufacturer] = useState({
-    identifier: "",
+    email: "",
     password: "",
   });
   const navigate = useNavigate();
 
   const signIn = async () => {
     try {
-        const url = `http://localhost:1337/api/manufacturers/login`;
-
-      console.log("Manufacturer data:", manufacturer);
-
-      if (manufacturer.identifier && manufacturer.password) {
-        const res = await axios.post(url, {
-          identifier: manufacturer.identifier,
+      const url = 'http://localhost:1337/api/manufacturers/login';
+  
+      console.log('Manufacturer data:', manufacturer);
+  
+      if (manufacturer.email && manufacturer.password) {
+        const requestData = {
+          email: manufacturer.email,
           password: manufacturer.password,
-        });
-        console.log("Response:", res);
-
+        };
+        const res = await axios.post(url, requestData);
+  
+        console.log('Response:', res);
+  
         if (res) {
           // Save the JWT to localStorage or any other storage method you prefer
-          localStorage.setItem("manufacturerToken", res.data.jwt);
+          localStorage.setItem('manufacturerToken', res.data.jwt);
           setManufacturer(initialManufacturer);
-          navigate("/manuDashboard"); // Change this to the manufacturer's dashboard page
+          navigate('/manuDashboard'); // Change this to the manufacturer's dashboard page
         }
       }
-    }catch (error) {
-  console.error("Error:", error);
-  if (error.response) {
-    console.error("Server response:", error.response);
-    console.error("Server error data:", error.response.data); // Changed line
-    toast.error(JSON.stringify(error.response.data, null, 2), { // Changed line
-      hideProgressBar: true,
-    });
-  } else {
-    toast.error(error.message, {
-      hideProgressBar: true,
-    });
-  }
-}
+    } catch (error) {
+      console.error('Error:', error);
+      if (error.response) {
+        console.error('Server response:', error.response);
+        console.error('Server error data:', error.response.data);
+        toast.error(JSON.stringify(error.response.data, null, 2), {
+          hideProgressBar: true,
+        });
+      } else {
+        toast.error(error.message, {
+          hideProgressBar: true,
+        });
+      }
+    }
   };
+  
 
   const handleManufacturerChange = ({ target }) => {
     const { name, value } = target;
@@ -104,14 +107,14 @@ const ManufacturerLogin = () => {
             </div>
             <form autoComplete="off">
             <FormGroup>
-              <label htmlFor="identifier" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Username or Email
               </label>
               <Input
                 type="text"
-                id="identifier"
-                name="identifier"
-                value={manufacturer.identifier}
+                id="email"
+                name="email"
+                value={manufacturer.email}
                 onChange={handleManufacturerChange}
                 placeholder="Username or Email"
                 required

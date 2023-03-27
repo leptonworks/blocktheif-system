@@ -2,13 +2,21 @@
 
 module.exports = {
   async login(ctx) {
+    
     const { email, password } = ctx.request.body;
+    console.log("Request body:", ctx.request.body); // Add this line to log the request body
+
+    if (!email || !password) {
+      return ctx.throw(401, 'Invalid email or password');
+    }
 
     // Query the manufacturers collection to find a user with the specified email and password
-    const user = await strapi.query('api::manufacturer.manufacturer').findOne({ email, password });
-
+    const user = await strapi.db.query('api::manufacturer.manufacturer').findOne({
+      where: { email: email},
+    });
+    console.log(user)
     if (!user) {
-      return ctx.throw(401, 'Invalid email or password');
+      return ctx.throw(401, 'Invalidd email or password');
     }
 
     // Generate a JWT token for the user

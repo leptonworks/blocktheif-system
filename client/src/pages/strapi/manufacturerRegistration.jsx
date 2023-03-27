@@ -16,18 +16,22 @@ const ManufacturerRegistration = () => {
   const signUp = async () => {
     try {
       const url = `http://localhost:1337/api/manufacturers/register`;
-
+  
       console.log("Manufacturer data:", manufacturer);
-
-      if (
-        manufacturer.Email &&
-        manufacturer.Password
-      ) {
+  
+      if (manufacturer.Email && manufacturer.Password) {
         const requestData = {
-          data: manufacturer,
+          email: manufacturer.Email,
+          password: manufacturer.Password,
         };
+        console.log("Request payload:", requestData);
+  
         const res = await axios.post(url, requestData);
+  
         console.log("Response:", res);
+  
+        console.log("Response data:", res.data); // Add this line to log the response data
+  
         if (res) {
           setManufacturer(initialManufacturer);
           navigate("/ManufacturerLogin");
@@ -49,7 +53,7 @@ const ManufacturerRegistration = () => {
       }
     }
   };
-
+  
   const handleManufacturerChange = ({ target }) => {
     const { name, value } = target;
     setManufacturer((currentManufacturer) => ({
