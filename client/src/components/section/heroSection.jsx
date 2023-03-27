@@ -45,7 +45,7 @@ const Welcome = () => {
       <section className="h-screen grid md:grid-cols-2">
         <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
           <div className="text-center md:text-left">
-            <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-white tracking-tighter f-f-i leading-tight text-heading-color">Secure Your Products With Block Theif</h1>
+            <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-green-400 tracking-tighter f-f-i leading-tight text-heading-color">Secure Your Products With Block Theif</h1>
             <div className="mx-auto md:mx-0 md:w-8/12">
               <h2 className="py-4 md:py-8 text-white text-lg lg:text-2xl text-center text-cyan-500">Eliminate counterfeit products with our advanced blockchain-based authentication system. Our tamper-proof and easily verifiable solution ensures product authenticity. Protect your brand, build consumer trust and secure your supply chain with us</h2>
               <div className="w-full flex justify-center md:block">
@@ -68,7 +68,7 @@ const Welcome = () => {
             id="to-top-button"
             onClick={goToTop}
             title="Go To Top"
-            className="fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-0 drop-shadow-md bg-indigo-500 text-white text-3xl font-bold"
+            className="fixed z-90 bottom-8 right-8 border-0 w-14 h-14 rounded-0 drop-shadow-md bg-fuchsia-500 text-white text-3xl font-bold"
           >
             &uarr;
           </button>
