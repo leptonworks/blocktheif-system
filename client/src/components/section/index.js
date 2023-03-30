@@ -53,7 +53,7 @@ export { default as ManufacturerLogin } from "../../pages/strapi/manufacturerLog
 export { default as ManufacturerProfile } from "../../pages/strapi/manufacturerProfile"
 
 
-export { default as Profile } from "../../pages/user/Profile"
+export { default as Profile } from "../../pages/mongoDB/profile"
 
 export { default as Registration1 } from "../../pages/mongoDB/registration1"
 export { default as Login1 } from "../../pages/mongoDB/Login1"

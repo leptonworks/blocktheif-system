@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import webCam from "./webCam";
 import ReviewML from "../ML";
-import Profile from "../user/profile";
+import Profile from "../mongoDB/profile";
 
 import ProductManagement from "../manufacturer/dashboardPages/ProductManagement";
 import ReviewPage1 from "../mongoDB/ReviewPage1";
