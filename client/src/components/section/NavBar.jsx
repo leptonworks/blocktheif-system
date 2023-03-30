@@ -33,13 +33,11 @@ const NavBar = () => {
         {["ScanQR", "Manufacturer", "Reviews", "AboutUs"].map((item, index) => (
           <NavbarItem key={item + index} title={item} />
         ))}
-                  <Link to="/Login1" className="text-white">
-
-        <li className="bg-[#5038DF] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
+        <Link to="/Login1" className="text-white">
+          <li className="bg-[#5038DF] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
             Login
-        </li>
+          </li>
         </Link>
-
       </ul>
       <div className="flex relative">
         {toggleMenu ? (
