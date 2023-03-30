@@ -55,3 +55,9 @@ export { default as ManufacturerProfile } from "../../pages/strapi/manufacturerP
 
 export { default as Profile } from "../../pages/user/Profile"
 
+export { default as Registration1 } from "../../pages/mongoDB/registration1"
+export { default as Login1 } from "../../pages/mongoDB/Login1"
+export { default as ReviewPage1 } from "../../pages/mongoDB/ReviewPage1"
+export { default as Products } from "../../pages/mongoDB/Products"
+export { default as ProductReviews } from "../../pages/mongoDB/ProductReviews"
+

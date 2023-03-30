@@ -3,6 +3,8 @@ import { QrReader } from "react-qr-reader";
 import { ethers } from "ethers";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 import jsQR from "jsqr";
+import axios from "axios";
+
 
 function WebCam() {
   const [data, setData] = useState("No result");
@@ -10,6 +12,20 @@ function WebCam() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isScanning, setIsScanning] = useState(false);
   const fileRef = useRef();
+
+  const addProduct = async (productId) => {
+    try {
+      const token = localStorage.getItem("user");
+      const tokenObject = JSON.parse(token);
+      const jwt = tokenObject.token;
+  
+      const response = await axios.post("http://localhost:5000/api/products/add-scanned-product", { productId }, { headers: { Authorization: `Bearer ${jwt}` } });
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error adding scanned product to user:", error);
+    }
+  };
+  
 
   const handleScan = async (result) => {
     if (result) {
@@ -36,6 +52,9 @@ function WebCam() {
       );
       setErrorMessage("");
       setIsScanning(false); // Stop scanning after successful scan
+      if (authenticate) {
+        await addProduct(parseInt(productId));
+      }
     } catch (err) {
       console.error(err);
       setErrorMessage("Product not found. Please scan a valid QR code.");
@@ -71,6 +90,7 @@ function WebCam() {
     };
     reader.readAsDataURL(file);
   };
+  
 
   return (
     <div className="flex justify-center items-center h-screen">
