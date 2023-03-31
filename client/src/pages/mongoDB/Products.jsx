@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axiosInstance from './axiosInstance';
 import axios from "axios";
 import { userData } from "./helper";
 
@@ -9,7 +10,7 @@ function Products() {
   useEffect(() => {
     const fetchUserProducts = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/api/products/user-products",
           {
             headers: {

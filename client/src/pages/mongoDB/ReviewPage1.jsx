@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { userData } from "./helper";
+import axiosInstance from './axiosInstance';
+
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -12,7 +14,7 @@ const ReviewPage1 = () => {
   useEffect(() => {
     const fetchUserProducts = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/api/products/user-products",
           {
             headers: {
@@ -29,7 +31,7 @@ const ReviewPage1 = () => {
 
     const fetchUserReviews = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/reviews/get-reviews",
           {
             headers: {
@@ -59,7 +61,7 @@ const ReviewPage1 = () => {
     console.log("JWT:", token); // Add this line
 
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "http://localhost:5000/reviews/add-review",
         {
           ...review,

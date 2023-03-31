@@ -4,6 +4,8 @@ import { ethers } from "ethers";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 import jsQR from "jsqr";
 import axios from "axios";
+import axiosInstance from '../mongoDB/axiosInstance';
+
 
 
 function WebCam() {
@@ -19,7 +21,7 @@ function WebCam() {
       const tokenObject = JSON.parse(token);
       const jwt = tokenObject.token;
   
-      const response = await axios.post("http://localhost:5000/api/products/add-scanned-product", { productId }, { headers: { Authorization: `Bearer ${jwt}` } });
+      const response = await axiosInstance.post("http://localhost:5000/api/products/add-scanned-product", { productId }, { headers: { Authorization: `Bearer ${jwt}` } });
       console.log(response.data);
     } catch (error) {
       console.error("Error adding scanned product to user:", error);

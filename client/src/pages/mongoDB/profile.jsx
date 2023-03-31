@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
+
 import { userData } from "./helper";
 
 const profile = () => {
@@ -10,7 +11,7 @@ const profile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "http://localhost:5000/api/users/profile",
           {
             headers: {

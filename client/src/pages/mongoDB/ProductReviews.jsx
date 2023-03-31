@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axiosInstance from './axiosInstance';
 import axios from "axios";
 import greeter from "../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 import { ethers } from "ethers";
@@ -59,7 +60,7 @@ function ProductReviews() {
         const fetchReviews = async () => {
           setIsLoading(true);
           try {
-            const response = await axios.get(
+            const response = await axiosInstance.get(
               "http://localhost:5000/reviews/get-reviews",
               {
                 headers: {
@@ -89,7 +90,7 @@ function ProductReviews() {
 
   const analyzeSentiment = async (reviewText) => {
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "http://172.20.10.3:4000/api/sentiment",
         {
           text: reviewText,
@@ -112,7 +113,7 @@ function ProductReviews() {
       console.log("Analyzing review:", review);
 
       try {
-        const response = await axios.post(
+        const response = await axiosInstance.post(
           "http://172.20.10.3:4000/api/sentiment",
           {
             text: review.text,
