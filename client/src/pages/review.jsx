@@ -14,7 +14,7 @@ function review() {
           </a>
           <div className="py-5">
             <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-              13 Jul 2020
+            Mar 10, 2023
             </p>
             <a
               href="/"
@@ -24,8 +24,7 @@ function review() {
               <p className="text-2xl font-bold leading-5">samsung galaxy s23 ultra</p>
             </a>
             <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
+            All S23 Ultra models have Snapdragon 8 Gen 2 (no more Exynos) New 200MP main camera, improvements to the other cameras. 256GB base storage (double than before) Big improvement in loudspeaker quality
             </p>
           </div>
         </div>
@@ -49,8 +48,7 @@ function review() {
               <p className="text-2xl font-bold leading-5">iphone 14 pro max</p>
             </a>
             <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
+            he iPhone 14 Pro Max isn’t just the most powerful phone around. It’s a joy to use, thanks to the clever new Dynamic Island for displaying notifications and live activities. Apple’s largest Pro model also delivers fantastic cameras
             </p>
           </div>
         </div>
@@ -76,8 +74,7 @@ function review() {
               </p>
             </a>
             <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
+            The Galaxy Z Flip 4 has a lot of refinements, such as a slimmer, lighter hinge and flatter edges. The new Snapdragon 8 Plus Gen 1 processor ensures that the Flip 4 shines in every task. Battery life is much better. The cameras are good, especially the night mode, but not quite $999 level.
             </p>
           </div>
         </div>
