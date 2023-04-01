@@ -74,6 +74,15 @@ router.get('/get-reviews', protect, async (req, res) => {
     res.status(500).json({ message: 'Error fetching reviews' });
   }
 });
+router.get('/all-reviews', protect, async (req, res) => {
+  try {
+    const allReviews = await Review.find();
+    res.status(200).json({ reviews: allReviews });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching all reviews' });
+  }
+});
 
 
 

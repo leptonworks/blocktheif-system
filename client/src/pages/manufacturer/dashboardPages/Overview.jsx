@@ -4,7 +4,18 @@ import Product from "../../../../../contract/artifacts/contracts/Greeter.sol/Pro
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { groupBy } from "lodash";
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip, Legend, CartesianGrid,Line } from "recharts";
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+  Line,
+} from "recharts";
+import axiosInstance from "../../mongoDB/axiosInstance";
+import { userData } from "../../mongoDB/helper";
 
 const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
 const ABI = Product.abi;
@@ -17,6 +28,8 @@ function Overview() {
   const [productIds, setProductIds] = useState([]);
   const [productPrices, setProductPrices] = useState([]);
   const [totalRevenue, setTotalRevenue] = useState(0);
+  const [reviews, setReviews] = useState([]);
+  const { token } = userData();
 
   useEffect(() => {
     async function getProductData() {
@@ -41,6 +54,24 @@ function Overview() {
     getProductData();
   }, []);
 
+  useEffect(() => {
+    async function fetchReviews() {
+      const response = await axiosInstance.get(
+        "http://localhost:5000/reviews/all-reviews",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = response.data;
+      console.log("Fetched Reviews:", data.reviews);
+      setReviews(data.reviews);
+    }
+
+    fetchReviews();
+  }, []);
+
   const dailyProductPrices = Object.entries(
     groupBy(productPrices, (price) => price)
   ).map(([price, prices]) => ({
@@ -54,28 +85,43 @@ function Overview() {
       {
         label: "Product Prices",
         data: dailyProductPrices.map((d) => d.data),
-        backgroundColor: dailyProductPrices.map(() => `#${Math.floor(Math.random()*16777215).toString(16)}`),
+        backgroundColor: dailyProductPrices.map(
+          () => `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        ),
         barPercentage: 0.4, // Make the bar size smaller
       },
     ],
   };
 
-  const chartData = dailyProductPrices.map(({ label, data }) => ({
-    name: label,
-    value: data,
-  }));
+  const averageRatings = productIds.reduce((acc, id) => {
+    const productReviews = reviews.filter(
+      (review) => review.productId.toString() === id.toString()
+    );
+    // console.log(`Product ID: ${id}`);
+    // console.log(`Product Reviews:`, productReviews);
 
-  const topRatedProducts = [
-    { name: "Product A", rating: 4.5 },
-    { name: "Product B", rating: 4.2 },
-    { name: "Product C", rating: 4.1 },
-  ];
+    const avgRating = productReviews.length
+      ? productReviews.reduce((sum, review) => sum + review.rating, 0) /
+        productReviews.length
+      : 0;
 
-  const lowestRatedProducts = [
-    { name: "Product X", rating: 2.5 },
-    { name: "Product Y", rating: 2.3 },
-    { name: "Product Z", rating: 2.1 },
-  ];
+    // console.log(`Average Rating: ${avgRating}`);
+    acc[id] = avgRating;
+    return acc;
+  }, {});
+
+  const sortedProductIds = productIds.sort(
+    (a, b) => averageRatings[b] - averageRatings[a]
+  );
+
+  const topRatedProducts = sortedProductIds
+    .slice(0, 3)
+    .map((id) => ({ name: `Product ${id}`, rating: averageRatings[id] }));
+
+  const lowestRatedProducts = sortedProductIds
+    .slice(-3)
+    .reverse()
+    .map((id) => ({ name: `Product ${id}`, rating: averageRatings[id] }));
 
   const reviewSentiments = [
     { name: "Positive", value: 60 },
@@ -85,124 +131,151 @@ function Overview() {
 
   const COLORS = ["#00C49F", "#FFBB28", "#FF8042"];
 
-  
-
-
-
+  const sortedReviews = reviews.slice(0, 3);
 
   return (
     <div className="bg-gray-100 min-h-screen">
-  <div className="container mx-auto p-8">
-    <h1 className="text-4xl font-bold mb-8">Overview</h1>
-    <div className="flex flex-wrap gap-6">
-      {/* Total Products */}
-      <div className="relative p-6 bg-white shadow-lg rounded-xl w-full md:w-72 dark:bg-gray-800 dark:text-gray-100">
-        <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
-          Total Products
-        </h2>
-        <p className="text-white-600">{productCount}</p>
-      </div>
-      {/* Total Revenue */}
-      <div className="relative p-6 bg-white shadow-lg rounded-xl w-full md:w-72 dark:bg-gray-800 dark:text-gray-100">
-        <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
-          Total Revenue
-        </h2>
-        <p className="text-white-600">${totalRevenue}</p>
-      </div>
-    </div>
-    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Top-rated Products */}
-      <div className="relative p-6 bg-white shadow-lg rounded-xl w-full dark:bg-gray-800 dark:text-gray-100">
-        <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
-          Top-rated Products
-        </h2>
-        {topRatedProducts.map((product) => (
-          <div key={product.name} className="mb-4">
-            <div className="flex items-center justify-between text-sm text-gray-400">
-              <p>{product.name}</p>
-              <p>{product.rating.toFixed(1)}</p>
-            </div>
-            <div className="w-full h-2 bg-green-100 rounded-full">
-              <div
-                className="h-full text-xs text-center text-white bg-green-400 rounded-full"
-                style={{ width: `${(product.rating / 5) * 100}%` }}
-              ></div>
-            </div>
+      <div className="container mx-auto p-8">
+        <h1 className="text-4xl font-bold mb-8">Overview</h1>
+        <div className="flex flex-wrap gap-6">
+          {/* Total Products */}
+          <div className="relative p-6 bg-white shadow-lg rounded-xl w-full md:w-72 dark:bg-gray-800 dark:text-gray-100">
+            <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-gray">
+              Total Products
+            </h2>
+            <p className="text-gray-600">{productCount}</p>
           </div>
-        ))}
-      </div>
-
-      {/* Lowest-rated Products */}
-      <div className="relative p-6 bg-white shadow-lg rounded-xl w-full dark:bg-gray-800 dark:text-gray-100">
-        <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
-          Lowest-rated Products
-        </h2>
-        {lowestRatedProducts.map((product) => (
-          <div key={product.name} className="mb-4">
-            <div className="flex items-center justify-between text-sm text-gray-400">
-              <p>{product.name}</p>
-              <p>{product.rating.toFixed(1)}</p>
-            </div>
-            <div className="w-full h-2 bg-red-100 rounded-full">
-              <div
-                className="h-full text-xs text-center text-white bg-red-400 rounded-full"
-                style={{ width: `${(product.rating / 5) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-
-           {/* Review Sentiments */}
-           
-           <div className="mt-12 bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-bold mb-2">Review Sentiments</h2>
-            <div className="mt-6">
-            <ResponsiveContainer width="70%" height={450}>
-              <PieChart>
-                <Pie
-                  data={reviewSentiments}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-            >
-              {reviewSentiments.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
-        </div>
-      </div>
-    
-<div className="mt-8">
-          <h1 className="text-2xl font-bold mb-4">Product Prices</h1>
-          <div className="w-full h-56 relative">
-            <div className="w-full h-full absolute">
-              <Bar data={data} options={{ maintainAspectRatio: false }} />
-            </div>
+          {/* Total Revenue */}
+          <div className="relative p-6 bg-white shadow-lg rounded-xl w-full md:w-72 dark:bg-gray-800 dark:text-gray-100">
+            <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-gray">
+              Total Revenue
+            </h2>
+            <p className="text-gray-600">${totalRevenue}</p>
           </div>
         </div>
-<div className="mt-8">
-<h1 className="text-4xl font-bold mb-4">Recent Reviews</h1>
-<div className="bg-white rounded-lg shadow-md p-4">
-<ul className="list-disc list-inside text-gray-600">
-<li>Review 1</li>
-<li>Review 2</li>
-<li>Review 3</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-);
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Top-rated Products */}
+          <div className="relative p-6 bg-white shadow-lg rounded-xl w-full dark:bg-gray-800 dark:text-gray-100">
+            <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-gray">
+              Top-rated Products
+            </h2>
+            {topRatedProducts.map((product) => (
+              <div key={product.name} className="mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-400">
+                  <p>{product.name}</p>
+                  <p>{product.rating.toFixed(1)}</p>
+                </div>
+                <div className="w-full h-2 bg-green-100 rounded-full">
+                  <div
+                    className="h-full text-xs text-center text-white bg-green-400 rounded-full"
+                    style={{ width: `${(product.rating / 5) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Lowest-rated Products */}
+          <div className="relative p-6 bg-white shadow-lg rounded-xl w-full dark:bg-gray-800 dark:text-gray-100">
+            <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-gray">
+              Lowest-rated Products
+            </h2>
+            {lowestRatedProducts.map((product) => (
+              <div key={product.name} className="mb-4">
+                <div className="flex items-center justify-between text-sm text-gray-400">
+                  <p>{product.name}</p>
+                  <p>{product.rating.toFixed(1)}</p>
+                </div>
+                <div className="w-full h-2 bg-red-100 rounded-full">
+                  <div
+                    className="h-full text-xs text-center text-white bg-red-400 rounded-full"
+                    style={{ width: `${(product.rating / 5) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Reviews */}
+        <div className="mt-8 bg-white shadow-lg rounded-xl p-6 w-full dark:bg-gray-800 dark:text-gray-100">
+          <h2 className="mb-4 text-2xl font-light text-gray-700 dark:gray-100">
+            Recent Reviews
+          </h2>
+          <ul className="space-y-4">
+            {sortedReviews.map((review, index) => (
+              <li key={`review-${index}`} className="border-b pb-4">
+                <div className="font-semibold text-gray-500">
+                  Product {review.productId}
+                </div>
+                <div className="text-gray-500">Rating: {review.rating}</div>
+                <p className="text-gray-500">{review.text}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Product Prices Bar Chart */}
+        <div className="mt-8 bg-white shadow-lg rounded-xl p-6 w-full dark:bg-gray-800 dark:text-gray-100">
+          <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
+            Product Prices
+          </h2>
+          <div
+            className="flex justify-center"
+            style={{
+              maxWidth: "100%",
+              width: "75%",
+              margin: "0 auto",
+            }}
+          >
+            <div style={{ width: "100%" }}>
+              <Bar data={data} />
+            </div>
+          </div>
+        </div>
+
+        {/* Review Sentiments Pie Chart */}
+        <div className="mt-8 bg-white shadow-lg rounded-xl p-6 w-full dark:bg-gray-800 dark:text-gray-100">
+          <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
+            Review Sentiments
+          </h2>
+          <div
+            className="flex justify-center"
+            style={{
+              maxWidth: "100%",
+              width: "75%",
+              margin: "0 auto",
+            }}
+          >
+            <div style={{ width: "100%" }}>
+              <ResponsiveContainer width="100%" height={400}>
+                <PieChart>
+                  <Pie
+                    data={reviewSentiments}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={150}
+                    fill="#8884d8"
+                    dataKey="value"
+                  >
+                    {reviewSentiments.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Overview;
