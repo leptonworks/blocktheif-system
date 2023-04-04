@@ -24,7 +24,7 @@ app.use('/auth', authRoutes);
 app.use('/reviews', reviewRoutes); // Add this line
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://thakshanasamarakone:Fu4gDCcAMkhA9EAM@thakshana.p5bgzzl.mongodb.net/?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://himasha:BKPmDGg6NKXYQgJl@cluster007.ainerdb.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
