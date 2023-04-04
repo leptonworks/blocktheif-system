@@ -24,4 +24,5 @@ jobs:
       run: npm install
 
     - name: Build the application
+      working-directory: ./client
       run: npm run build
