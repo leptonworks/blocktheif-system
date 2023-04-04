@@ -20,8 +20,8 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 );
 
 const Welcome = () => {
-
   const [showToTopButton, setShowToTopButton] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -29,7 +29,12 @@ const Welcome = () => {
   }, []);
 
   const handleScroll = () => {
-    if (window.scrollY > 200) {
+    const scrollY = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollY / maxScroll) * 100;
+    setScrollProgress(progress);
+
+    if (scrollY > 100) {
       setShowToTopButton(true);
     } else {
       setShowToTopButton(false);
@@ -62,18 +67,42 @@ const Welcome = () => {
           <img src="./images/landingPageLogo.png" alt="Your logo" className="absolute object-contain top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
         </div>
       </section>
-      {showToTopButton && (
-        <div>
-          <button
-            id="to-top-button"
-            onClick={goToTop}
-            title="Go To Top"
-            className="fixed z-90 bottom-8 right-8 border-0 w-14 h-14 rounded-0 drop-shadow-md bg-fuchsia-500 text-white text-3xl font-bold"
-          >
-            &uarr;
-          </button>
-        </div>
-      )}
+      <div className="fixed bottom-0 left-0 w-full h-1 bg-gray-300">
+  <div className="bg-green-400 h-1" style={{ width: `${scrollProgress}%` }}></div>
+</div>
+{showToTopButton && (
+  <div className="fixed bottom-10 right-10 z-50">
+    <div style={{ marginBottom: '10px' }}>
+      <button
+        onClick={goToTop}
+        title="Go to top"
+        className="bg-white rounded-full w-14 h-14 flex items-center justify-center border-none text-4xl font-bold text-gray-600 shadow-lg hover:shadow-xl focus:outline-none relative"
+      >
+        <svg
+          className="w-6 h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+      </button>
+    </div>
+    <div className="bg-gray-400 h-1 relative" style={{ height: "1px", marginBottom: '10px' }}>
+      <div
+        className="bg-green-500 h-1 rounded-full absolute left-0 top-0"
+        style={{ width: `${scrollProgress}%`, borderRadius: "9999px" }}
+      />
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
