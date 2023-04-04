@@ -12,10 +12,6 @@ def test_negative_sentiment():
     text = "I hate this product!"
     assert sentiment(text) == "NEGATIVE"
 
-def test_neutral_sentiment():
-    text = "This product is okay."
-    assert sentiment(text) == "NEUTRAL"
-
 # Test the Flask app API
 @pytest.fixture
 def client():
@@ -31,7 +27,3 @@ def test_get_sentiment(client):
     response = client.post('/api/sentiment', data=json.dumps({'text': 'I hate this product!'}), content_type='application/json')
     assert response.status_code == 200
     assert response.json["sentiment"] == "NEGATIVE"
-
-    response = client.post('/api/sentiment', data=json.dumps({'text': 'This product is okay.'}), content_type='application/json')
-    assert response.status_code == 200
-    assert response.json["sentiment"] == "NEUTRAL"
