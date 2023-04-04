@@ -2,7 +2,7 @@ name: Build and Test Frontend
 
 on:
   push:
-    branches: [ Demo_002 ]
+    branches: [ release ]
 
 jobs:
   build:
