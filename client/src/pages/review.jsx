@@ -74,7 +74,7 @@ function review() {
               </p>
             </a>
             <p className="mb-4 text-gray-700">
-            The Galaxy Z Flip 4 has a lot of refinements, such as a slimmer, lighter hinge and flatter edges. The new Snapdragon 8 Plus Gen 1 processor ensures that the Flip 4 shines in every task. Battery life is much better. The cameras are good, especially the night mode, but not quite $999 level.
+            Xiaomi has revamped the design of the 13 Pro – just not in a good way. Most of the phone retains its usual sleek appearance, but the gigantic camera module sticks out like a sore thumb.
             </p>
           </div>
         </div>
@@ -98,8 +98,7 @@ function review() {
               <p className="text-2xl font-bold leading-5">Galaxy Z Flip4</p>
             </a>
             <p className="mb-4 text-gray-700">
-              Sed ut perspiciatis unde omnis iste natus error sit sed quia
-              consequuntur magni voluptatem doloremque.
+            The Galaxy Z Flip 4 has a lot of refinements, such as a slimmer, lighter hinge and flatter edges. The new Snapdragon 8 Plus Gen 1 processor ensures that the Flip 4 shines in every task. Battery life is much better. The cameras are good, especially the night mode, but not quite $999 level.
             </p>
           </div>
         </div>
