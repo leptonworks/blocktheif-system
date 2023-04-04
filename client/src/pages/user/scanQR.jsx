@@ -19,7 +19,7 @@ function scanQR() {
     console.log(qrValue)
     setQrImgUrl(response);
     setQrValue("");
-  };
+  };  
 
   return (
     <section className="h-screen grid grid-cols-1">

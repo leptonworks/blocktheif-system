@@ -6,8 +6,6 @@ import jsQR from "jsqr";
 import axios from "axios";
 import axiosInstance from '../mongoDB/axiosInstance';
 
-
-
 function WebCam() {
   const [data, setData] = useState("No result");
   const [successMessage, setSuccessMessage] = useState("");
@@ -28,7 +26,6 @@ function WebCam() {
     }
   };
   
-
   const handleScan = async (result) => {
     if (result) {
       await authenticateProduct(result);
@@ -38,7 +35,6 @@ function WebCam() {
   const handleError = (error) => {
     console.error(error);
   };
-
 
   const authenticateProduct = async (productId) => {
     const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
@@ -68,9 +64,12 @@ function WebCam() {
     fileRef.current.click();
   };
 
-
   const handleChange = async (e) => {
     const file = e.target.files[0];
+    if (file.size > 4000000) { // Check file size limit
+      setErrorMessage("File size exceeds 4MB limit.");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = async (event) => {
       const image = new Image();
@@ -86,6 +85,7 @@ function WebCam() {
         if (result) {
           await authenticateProduct(result.data);
         } else {
+         
           setErrorMessage("Failed to scan QR code from file.");
         }
       };
