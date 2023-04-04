@@ -15,7 +15,7 @@ function AddProduct() {
   const [errorMessage, setErrorMessage] = useState("");
   const [qrImgUrl, setQrImgUrl] = useState("");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
 
   const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
