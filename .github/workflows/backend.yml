@@ -1,0 +1,28 @@
+name: Build and Test Hardhat Project
+
+on:
+  push:
+    branches: [ Demo_002 ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: 'Demo_002'
+
+    - name: Install Node.js and Yarn
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.12.1'
+
+    - name: Install dependencies
+      working-directory: ./contract
+      run: yarn
+
+    - name: Build the application
+      working-directory: ./contract
+      run: npx hardhat compile
