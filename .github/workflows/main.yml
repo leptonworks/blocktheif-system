@@ -1,26 +1,28 @@
-name: CI/CD pipeline
+name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - demo_002
+    branches: [ Demo_002 ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: 'Demo_002'
 
-      # Frontend (React)
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18.12.1
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.12.1'
 
-      - name: Install frontend dependencies
-        run: cd client && npm ci
+    - name: Install dependencies
+      working-directory: ./client
+      run: npm install
 
-      - name: Develop frontend
-        run: cd client && npm run dev
+    - name: Build the application
+      working-directory: ./client
+      run: npm run build
