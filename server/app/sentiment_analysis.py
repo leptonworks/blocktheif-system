@@ -10,9 +10,11 @@ from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 from sklearn.model_selection import train_test_split
 from keras.utils.np_utils import to_categorical
 import re
+import os
+
 
 #Load the training data from file and display its first few rows
-data = pd.read_csv('server/app/train.tsv', sep="\t")
+data = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'train.tsv'), sep="\t")
 
 data.head()
 
