@@ -27,3 +27,5 @@ jobs:
         cd server/app
         pip install pytest
         pytest
+      env:
+        PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
