@@ -1,4 +1,4 @@
-name: Python ML Model
+name: Python ML Model / Flask Server
 
 on:
   push:
