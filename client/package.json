@@ -41,7 +41,8 @@
     "react-toastify": "^9.1.2",
     "reactstrap": "^9.1.6",
     "recharts": "^2.4.3",
-    "strapi-sdk-javascript": "^0.3.3"
+    "strapi-sdk-javascript": "^0.3.3",
+    "strapi-sdk-js": "^2.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
