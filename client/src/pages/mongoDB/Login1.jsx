@@ -66,14 +66,10 @@ const Login1 = () => {
           <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
           <div className="w-full max-w-md z-10">
             <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
-              User pakaya..
+              Welcome to Login
             </div>
             <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
-              What is  Ipsum Lorem Ipsum is simply dummy text of the
-              printing and typesetting industry Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s when an
-              unknown printer took a galley of type and scrambled it to make a
-              type specimen book it has?
+              Access your account to explore our platform that connects users and manufacturers. Discover products, provide feedback, and communicate seamlessly with our innovative solution.
             </div>
           </div>
           <ul className="circles">
@@ -96,7 +92,7 @@ const Login1 = () => {
                 Welcome Back!
               </h2>
               <p className="mt-2 text-sm text-gray-500">
-                Please sign in to your account
+                Sign in to access your account
               </p>
             </div>
             <form autoComplete="off">
