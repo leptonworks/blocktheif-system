@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Import CORS
-from sentiment_analysis import sentiment
+from sentiment_analysis import predict_sentiment
 
 #Create the Flask app
 app = Flask(__name__)
