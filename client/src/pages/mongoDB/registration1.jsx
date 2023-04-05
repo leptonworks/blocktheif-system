@@ -94,22 +94,18 @@ const registration1 = () => {
     setSelectedRole(e.target.value);
   };
 
-  return (  
-    <div className="relative min-h-screen flex">
+  return (
+<div className="relative min-h-screen flex">
       <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
         <div className="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative">
           {/* Add the background image URL */}
           <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
           <div className="w-full max-w-md z-10">
             <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
-              User pakaya..
+              Welcome to the Future of Product Authentication
             </div>
             <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
-              What is Ipsum Lorem Ipsum is simply dummy text of the printing and
-              typesetting industry Lorem Ipsum has been the industry's standard
-              dummy text ever since the 1500s when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book it
-              has?
+              Join our platform today and become a part of the revolution in product authentication. Our cutting-edge system utilizes blockchain technology to ensure the authenticity of products, providing a secure and reliable way for consumers to verify their purchases and manufacturers to effectively manage their products.
             </div>
           </div>
           <ul className="circles">
@@ -136,8 +132,6 @@ const registration1 = () => {
               </p>
             </div>
 
-            
-            
             <form autoComplete="off">
               <div className="flex justify-center items-center mb-4">
                 <label className="inline-flex items-center">
