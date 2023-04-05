@@ -12,7 +12,7 @@ CORS(app)
 @app.route('/api/sentiment', methods=['POST'])
 def get_sentiment():
     text = request.json['text']
-    sentiment_result = sentiment(text)
+    sentiment_result = predict_sentiment(text)
     return jsonify({'sentiment': sentiment_result})
 
 
