@@ -139,11 +139,9 @@ function manuacturer() {
     >
       Login
     </button>
-  </form>
+</div>
 </div>
 
-    </section>
-    </div>
   );
 }
 
