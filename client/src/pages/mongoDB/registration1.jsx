@@ -102,14 +102,14 @@ const registration1 = () => {
           <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"></div>
           <div className="w-full max-w-md z-10">
             <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
-              USER
+              User pakaya..
             </div>
             <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
               What is Ipsum Lorem Ipsum is simply dummy text of the printing and
               typesetting industry Lorem Ipsum has been the industry's standard
               dummy text ever since the 1500s when an unknown printer took a
               galley of type and scrambled it to make a type specimen book it
-              has?ccvvvsavasvasv
+              has?
             </div>
           </div>
           <ul className="circles">
@@ -132,7 +132,7 @@ const registration1 = () => {
                 Register
               </h2>
               <p className="mt-2 text-sm text-gray-500">
-                Please sign up for a new account
+                Create a new account to get started
               </p>
             </div>
 

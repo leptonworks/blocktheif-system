@@ -1,16 +1,16 @@
 import json
 import pytest
-from sentiment_analysis import sentiment
+from sentiment_analysis import predict_sentiment
 from app import app
 
 # Test the sentiment analysis model
 def test_positive_sentiment():
     text = "I love this product!"
-    assert sentiment(text) == "POSITIVE"
+    assert predict_sentiment(text) == "POSITIVE"
 
 def test_negative_sentiment():
     text = "I hate this product!"
-    assert sentiment(text) == "NEGATIVE"
+    assert predict_sentiment(text) == "NEGATIVE"
 
 # Test the Flask app API
 @pytest.fixture

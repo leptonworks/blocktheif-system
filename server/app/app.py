@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS  # Import CORS
-from sentiment_analysis import sentiment
+from sentiment_analysis import predict_sentiment
 
 #Create the Flask app
 app = Flask(__name__)
@@ -12,7 +12,7 @@ CORS(app)
 @app.route('/api/sentiment', methods=['POST'])
 def get_sentiment():
     text = request.json['text']
-    sentiment_result = sentiment(text)
+    sentiment_result = predict_sentiment(text)
     return jsonify({'sentiment': sentiment_result})
 
 

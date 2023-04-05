@@ -1,5 +1,5 @@
-import numpy as np 
-import pandas as pd 
+import numpy as np
+import pandas as pd
 from nltk.corpus import stopwords
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -12,75 +12,64 @@ from keras.utils.np_utils import to_categorical
 import re
 import os
 
-
-#Load the training data from file and display its first few rows
+# Read and display training data
 data = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'train.tsv'), sep="\t")
-
 data.head()
 
-#Select only the tweet and label columns from the data
-data = data[['tweet','label']]
-
+# Choose tweet and label columns
+data = data[['tweet', 'label']]
 data.head()
 
-# data cleaning
-#for cleaning the text of the tweets
-stopwords = stopwords.words('english')
+# Clean tweet text
+stopword_list = stopwords.words('english')
 
-def tweet_cleaner(tweet):
-    tweet = re.sub(r"@\w*", " ", str(tweet).lower()).strip() #removing username
-    tweet = re.sub(r'https?://[A-Za-z0-9./]+', " ", str(tweet).lower()).strip() #removing links
-    tweet = re.sub(r'[^a-zA-Z]', " ", str(tweet).lower()).strip() #removing sp_char
-    tw = []
-    
-    for text in tweet.split():
-        if text not in stopwords:
-            tw.append(text)
-    
-    return " ".join(tw)
+def clean_tweet_text(tweet):
+    tweet = re.sub(r"@\w*", " ", tweet.lower()).strip() #remove username
+    tweet = re.sub(r'https?://[A-Za-z0-9./]+', " ", tweet.lower()).strip() #remove links
+    tweet = re.sub(r'[^a-zA-Z]', " ", tweet.lower()).strip() #remove special characters
+    cleaned_tweet = []
+    for word in tweet.split():
+        if word not in stopword_list:
+            cleaned_tweet.append(word)
+    return " ".join(cleaned_tweet)
 
-#Clean the tweet text in the data
-data.tweet = data.tweet.apply(lambda x: tweet_cleaner(x))
-
+data.tweet = data.tweet.apply(lambda x: clean_tweet_text(x))
 data.head()
 
-# text to sequence
-#Convert text to sequence using the Tokenizer
-tokenizer = Tokenizer(num_words=3000)
-tokenizer.fit_on_texts(data['tweet'].values)
-X = tokenizer.texts_to_sequences(data['tweet'].values)
+# Convert text to sequence
+text_tokenizer = Tokenizer(num_words=3000)
+text_tokenizer.fit_on_texts(data['tweet'].values)
+X = text_tokenizer.texts_to_sequences(data['tweet'].values)
 X = pad_sequences(X)
-
 X.shape
 
-#Get the categorical labels for the data
+# Get categorical labels
 Y = pd.get_dummies(data['label']).values
 
-# model
-#   Define the neural network model using Keras
-model = Sequential()
-model.add(Embedding(3000, 200,input_length = X.shape[1]))
-model.add(SpatialDropout1D(0.25))
-model.add(LSTM(150, dropout=0.2, recurrent_dropout=0.2))
-model.add(Dense(3,activation='softmax'))
-model.compile(loss = 'categorical_crossentropy', optimizer='adam',metrics = ['accuracy'])
+# Define neural network model
+neural_network_model = Sequential()
+neural_network_model.add(Embedding(3000, 200, input_length=X.shape[1]))
+neural_network_model.add(SpatialDropout1D(0.25))
+neural_network_model.add(LSTM(150, dropout=0.2, recurrent_dropout=0.2))
+neural_network_model.add(Dense(3, activation='softmax'))
+neural_network_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-#Display the model summary
-print(model.summary())
+# Show model summary
+print(neural_network_model.summary())
 
-#Train the model on the training data
-model.fit(X, Y, epochs = 4, batch_size=32, verbose = 2)
+# Train model
+neural_network_model.fit(X, Y, epochs=4, batch_size=32, verbose=2)
 
-#Define a function for predicting the sentiment of a text input
-def sentiment(text):
-    
-    x_test = pad_sequences(tokenizer.texts_to_sequences([text]), maxlen=96)
-    score = model.predict([x_test])[0]
-    
-    if np.argmax(score) == 2:
-        a = "POSITIVE"
-    elif np.argmax(score) == 0:
-        a = "NEGATIVE"
-    elif np.argmax(score) == 1:
-        a = "NEUTRAL"
-    return a
+# Function to predict sentiment
+def predict_sentiment(text):
+    x_test = pad_sequences(text_tokenizer.texts_to_sequences([text]), maxlen=96)
+    sentiment_score = neural_network_model.predict([x_test])[0]
+    if np.argmax(sentiment_score) == 2:
+        sentiment_label = "POSITIVE"
+    elif np.argmax(sentiment_score) == 0:
+        sentiment_label = "NEGATIVE"
+    elif np.argmax(sentiment_score) == 1:
+        sentiment_label = "NEUTRAL"
+    return sentiment_label
+
+
