@@ -45,47 +45,53 @@ function ProductReviews() {
       setIsLoading(true);
       try {
         const bigNumberIds = await contract.getProductIds();
+        console.log("Fetched product IDs (BigNumber format):", bigNumberIds);
         const ids = bigNumberIds.map((id) => id.toNumber());
+        console.log("Fetched product IDs (Number format):", ids);
         setProductIds(ids);
       } catch (error) {
         console.error(error);
       }
       setIsLoading(false);
     };
-
+  
     fetchProductIds();
   }, []);
-
-    useEffect(() => {
-        const fetchReviews = async () => {
-          setIsLoading(true);
-          try {
-            const response = await axiosInstance.get(
-              "http://localhost:5000/reviews/get-reviews",
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
-            const allReviews = response.data.reviews;
-            const filteredReviews = allReviews.filter((review) =>
-              productIds.includes(review.productId)
-            );
-            setReviews(filteredReviews);
-      
-            // Call the categorizeReviews function after setting the reviews
-            await categorizeReviews();
-          } catch (error) {
-            console.error(error);
+  
+  useEffect(() => {
+    const fetchReviews = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axiosInstance.get(
+          "http://localhost:5000/reviews/all-reviews",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-          setIsLoading(false);
-        };
-      
-        if (productIds.length > 0) {
-          fetchReviews();
-        }
-      }, [productIds]);
+        );
+        console.log("Response from all-reviews API:", response);
+        const allReviews = response.data.reviews;
+        console.log("All reviews:", allReviews);
+        const filteredReviews = allReviews.filter((review) =>
+        productIds.includes(Number(review.productId))
+      );      
+        console.log("Filtered reviews:", filteredReviews);
+        setReviews(filteredReviews);
+  
+        // Call the categorizeReviews function after setting the reviews
+        await categorizeReviews(filteredReviews);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsLoading(false);
+    };
+  
+    if (productIds.length > 0) {
+      fetchReviews();
+    }
+  }, [productIds]);
+  
       
 
   const analyzeSentiment = async (reviewText) => {
@@ -102,27 +108,28 @@ function ProductReviews() {
       return null;
     }
   };
-
-  const categorizeReviews = async () => {
+  
+  const categorizeReviews = async (reviewsToCategorize) => {
     const positiveReviews = [];
     const negativeReviews = [];
-
+  
     console.log("Categorizing reviews...");
-
-    for (const review of reviews) {
-      console.log("Analyzing review:", review);
-
+    console.log("Total reviews to categorize:", reviewsToCategorize.length);
+  
+    for (const review of reviewsToCategorize) {
+      console.log("Analyzing review:", reviewsToCategorize);
+  
       try {
         const response = await axiosInstance.post(
-          "http://172.20.10.3:4000/api/sentiment",
+          "http://192.168.1.3:4000/api/sentiment",
           {
             text: review.text,
           }
         );
-
+  
         const sentiment = response.data.sentiment;
         console.log("Sentiment for review:", sentiment);
-
+  
         if (sentiment.toLowerCase() === "positive") {
           positiveReviews.push(review);
         } else {
@@ -132,17 +139,18 @@ function ProductReviews() {
         console.error("Error analyzing sentiment:", error);
       }
     }
-
+  
     console.log("Categorized reviews:", {
       positive: positiveReviews,
       negative: negativeReviews,
     });
-
+  
     setCategorizedReviews({
       positive: positiveReviews,
       negative: negativeReviews,
     });
   };
+  
 
   return (
     <div className="nav-spacing">
