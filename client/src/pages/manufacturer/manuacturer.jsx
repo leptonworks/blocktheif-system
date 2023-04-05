@@ -133,8 +133,15 @@ function manuacturer() {
         </div>
       </div>
     </div>
-  </div>
-  </div>
+    <button
+      className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="submit"
+    >
+      Login
+    </button>
+</div>
+</div>
+
   );
 }
 
