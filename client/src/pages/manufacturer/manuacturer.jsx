@@ -3,6 +3,7 @@ import React from "react";
 
 function manuacturer() {
   return (
+    <div className="nav-spacing">
     <div class=" divide-y">
     <div className="px-4 py-16 mx-auto bg-[url('/images/hghg.jpg')] bg-cover   sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -133,17 +134,12 @@ function manuacturer() {
         </div>
       </div>
     </div>
-    <button
-      className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      type="submit"
-    >
-      Login
-    </button>
-  </form>
-</div>
-
-    </section>
     </div>
+    </div>
+    </div>
+
+
+
   );
 }
 
