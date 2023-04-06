@@ -6,6 +6,6 @@ import ReviewSection from './reviewSection';
 describe('ReviewSection', () => {
   test('renders ReviewSection component', () => {
     render(<ReviewSection />);
-    expect(screen.getAllByText(/"Discover the unmatched satisfaction of our customers through their candid reviews."/i).length).toBe(4);
+    expect(screen.getByText("User Reviews")).toBeInTheDocument();
   });
 });
