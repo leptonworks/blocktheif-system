@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Product from "../../../../../contract/artifacts/contracts/Greeter.sol/Product.json";
 import Modal from "react-modal";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+// Initialize AOS
+AOS.init();
 
 const customStyles = {
   overlay: {
@@ -92,19 +97,23 @@ function ViewProducts() {
             View Products
           </h2>
           <div className="flex justify-end mb-4">
-            <input
-              type="text"
-              placeholder="Search products"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border border-gray-400 p-2 rounded-md"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search products"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border border-gray-400 p-2 pl-8 rounded-md"
+              />
+              <span className="absolute left-2 top-2 text-gray-500"></span>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden"
+                data-aos="fade-up"
               >
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-gray-800 mb-2">

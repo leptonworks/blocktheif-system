@@ -11,7 +11,7 @@ AOS.init();
 
 function manuSection() {
   return (
-    <section className="h-screen grid md:grid-cols-2">
+    <section className="h-screen grid md:grid-cols-2" id="target-section">
       <div className="bg-gradient-to-r from-[#1d3b6c] to-[#274c7d] flex flex-col justify-center px-6 md:px-12 py-16 md:py-0 text-center">
         <h1
           className="text-3xl sm:text-4xl md:text-5xl text-white font-bold mb-6"

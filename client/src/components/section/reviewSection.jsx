@@ -1,23 +1,21 @@
 import React from "react";
 import ReviewButton from "../buttons/reviewButton";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const reviews = [
   {
-    userName: "Banu Athuraliya",
+    userName: "John Doe",
     userLocation: "New York, USA",
-    userImage: "path/to/image.jpg",
     reviewText: "Great product! Really helped me...",
   },
   {
-    userName: "Sulari Fernando",
+    userName: "Will Smith",
     userLocation: "Uttah, USA",
-    userImage: "path/to/image.jpg",
     reviewText: "Awesome Project...",
   },
   {
-    userName: "Nuwan Jayawardhana",
+    userName: "Christopher Bumstead",
     userLocation: "Vegas, USA",
-    userImage: "path/to/image.jpg",
     reviewText: "Authentified my products!!",
   }
   // ... more review objects
@@ -35,10 +33,9 @@ function reviewSection({ title, buttonText, cardsToShow }) {
           {reviews.slice(0, cardsToShow || 3).map((review, i) => (
             <div key={i} className="bg-white rounded-lg shadow-md p-6 w-72">
               <div className="flex items-center mb-4">
-                <img
-                  src={review.userImage || "./images/user-placeholder.png"}
-                  alt="User"
-                  className="w-12 h-12 object-cover rounded-full mr-4"
+                <AccountCircleIcon
+                  fontSize="large"
+                  className="w-12 h-12 mr-4 text-gray-400"
                 />
                 <div>
                   <h2 className="text-xl font-bold">{review.userName}</h2>
