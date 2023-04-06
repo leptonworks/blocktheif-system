@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReadMore from "../buttons/readMore";
+import Typist from "react-text-typist";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -45,9 +46,21 @@ const Welcome = () => {
       <section className="h-screen grid md:grid-cols-2">
         <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
           <div className="text-center md:text-left">
-            <h1 className="text-4xl lg:text-2xl xl:text-5xl font-extrabold text-green-400 tracking-tighter f-f-i leading-tight text-heading-color">
-              Secure Your Products With Block Theif
-            </h1>
+            <Typist
+              className="text-4xl lg:text-2xl xl:text-5xl font-extrabold text-green-400 tracking-tighter f-f-i leading-tight text-heading-color"
+              sentences={[
+                "Secure Your Products With Block Thief",
+                "Eliminate Counterfeit Products",
+                "Build Consumer Trust",
+              ]}
+              loop={true}
+              typingSpeed={150}
+              deletingSpeed={75}
+              pauseTime={2000}
+              cursorSmooth={true}
+              cursorBlinkSpeed={500}
+            />
+
             <div className="mx-auto md:mx-0 md:w-8/12">
               <h2 className="py-4 md:py-8 text-white text-lg lg:text-2xl text-center text-cyan-500">
                 Eliminate counterfeit products with our advanced

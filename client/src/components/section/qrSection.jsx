@@ -1,5 +1,7 @@
 import React from "react";
 import ScanButton from "../buttons/scanButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 
 function QrSection() {
   return (
@@ -8,7 +10,11 @@ function QrSection() {
         <div className="md:flex md:flex-row md:items-center md:justify-between">
           <div className="md:w-1/2 lg:w-2/3 px-4 md:px-0">
             <div className="md:w-1/2 lg:w-1/2 px-6 py-10 md:py-0 w-96 lg:w-auto">
-              <img src="./images/scanQR.jpg" className="hidden sm:block w-full h-auto lg:h-full" />
+              <FontAwesomeIcon
+                icon={faQrcode}
+                className="hidden sm:block w-full h-auto lg:h-full text-white"
+                size="6x"
+              />
             </div>
           </div>
           <div className="my-4">

@@ -233,46 +233,6 @@ function Overview() {
             </div>
           </div>
         </div>
-
-        {/* Review Sentiments Pie Chart */}
-        <div className="mt-8 bg-white shadow-lg rounded-xl p-6 w-full dark:bg-gray-800 dark:text-gray-100">
-          <h2 className="mb-4 text-2xl font-light text-gray-700 dark:text-white">
-            Review Sentiments
-          </h2>
-          <div
-            className="flex justify-center"
-            style={{
-              maxWidth: "100%",
-              width: "75%",
-              margin: "0 auto",
-            }}
-          >
-            <div style={{ width: "100%" }}>
-              <ResponsiveContainer width="100%" height={400}>
-                <PieChart>
-                  <Pie
-                    data={reviewSentiments}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    outerRadius={150}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {reviewSentiments.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

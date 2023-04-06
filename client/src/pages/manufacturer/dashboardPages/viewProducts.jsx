@@ -58,7 +58,7 @@ function ViewProducts() {
           emei,
           color,
           size,
-          price: ethers.utils.formatEther(price),
+          price: parseInt(price),
           timestamp: new Date(timestamp.toNumber() * 1000).toLocaleString(),
         });
       }
