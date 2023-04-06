@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { SiEthereum } from "react-icons/si";
-// import { BsInfoCircle } from "react-icons/bs";
-// import { Loader } from "./";
 import ReadMore from "../buttons/readMore";
-// import landingPageLogo from "../../../images/landingPageLogo.png";
-
-const companyCommonStyles =
-  "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
@@ -48,11 +41,11 @@ const Welcome = () => {
   };
 
   return (
-    <div className="nav-spacing bg-gradient-to-br from-[#04141f] to-[#0c2b4e]">
+    <div className="nav-spacing bg-gradient-to-br from-[#0f3460] to-[#162955]">
       <section className="h-screen grid md:grid-cols-2">
         <div className="mx-auto container relative z-0 px-4 xl:px-0 flex flex-col justify-center">
           <div className="text-center md:text-left">
-            <h1 className="text-3xl lg:text-2xl xl:text-5xl font-black text-green-400 tracking-tighter f-f-i leading-tight text-heading-color">
+            <h1 className="text-4xl lg:text-2xl xl:text-5xl font-extrabold text-green-400 tracking-tighter f-f-i leading-tight text-heading-color">
               Secure Your Products With Block Theif
             </h1>
             <div className="mx-auto md:mx-0 md:w-8/12">

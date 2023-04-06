@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axiosInstance from './axiosInstance';
+import React, { useState, useEffect } from "react";
+import axiosInstance from "./axiosInstance";
 
 import { userData } from "./helper";
 
-const profile = () => {
+import Img from "../../../images/landingPageLogo.png";
+
+const Profile = () => {
   const [user, setUser] = useState(null);
   const { token } = userData();
-
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,9 +22,8 @@ const profile = () => {
           }
         );
         setUser(response.data);
-        console.log(response)
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        console.error("Error fetching user data:", error);
       }
     };
 
@@ -35,30 +35,27 @@ const profile = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen py-6 flex flex-col justify-center sm:py-12">
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-          <div className="max-w-md mx-auto">
-            <div>
-              <h1 className="text-2xl font-semibold">Profile</h1>
-            </div>
-            <div className="divide-y divide-gray-200">
-              <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                <p>
-                  <span className="font-semibold">Email:</span> {user.email}
-                </p>
-                <p>
-                  <span className="font-semibold">Role:</span> {user.role}
-                </p>
-                {/* Add more fields as needed */}
-              </div>
-            </div>
-          </div>
+    <section
+      className=" flex font-medium items-center justify-center h-screen"
+      style={{ fontFamily: "Montserrat" }}
+    >
+      <section className="w-84 mx-auto bg-[#20354b] rounded-2xl px-8 py-6 shadow-lg">
+        <div className="flex items-center justify-between"></div>
+        <div className="mt-6 w-fit mx-auto">
+          <img src={Img} className="rounded-full w-28" alt="profile picture" />
         </div>
-      </div>
-    </div>
+
+        <div className="mt-8">
+          <h2 className="text-white font-bold text-2xl tracking-wide">
+            UserName : {user.email.split("@")[0]}
+            <br />
+            Role : {user.role}
+          </h2>
+        </div>
+        <p className="text-emerald-400 font-semibold mt-2.5">Active</p>
+      </section>
+    </section>
   );
 };
 
-export default profile;
+export default Profile;
