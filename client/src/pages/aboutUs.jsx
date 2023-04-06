@@ -2,10 +2,11 @@ import React from 'react';
 import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+
 function AboutUs() {
   const teamMembers = [
     {
-      name: 'Jane Smith',
+      name: 'Kavindu ',
       title: 'CTO',
       description: 'Jane is a technology enthusiast with a strong background in software development.',
       imgUrl: '/images/WhatsApp Image 2023-02-25 at 23.57.52.jpg',
@@ -16,7 +17,29 @@ function AboutUs() {
       },
     },
     {
-      name: 'Jane Smith',
+      name: ' Thakshana Samarakone',
+      title: 'CTO',
+      description: 'Jane is a technology enthusiast with a strong background in software development.',
+      imgUrl: '/images/Thakshana.png',
+      social: {
+        instagram: 'https://www.instagram.com/janesmith',
+        linkedin: 'https://www.linkedin.com/in/janesmith',
+        github: 'https://github.com/janesmith',
+      },
+    },
+    {
+      name: 'Himasha Herath',
+      title: 'CTO',
+      description: 'Jane is a technology enthusiast with a strong background in software development.',
+      imgUrl: '/images/Himasha.jpg',
+      social: {
+        instagram: 'https://www.instagram.com/janesmith',
+        linkedin: 'https://www.linkedin.com/in/janesmith',
+        github: 'https://github.com/janesmith',
+      },
+    },
+    {
+      name: 'Hasini Smith',
       title: 'CTO',
       description: 'Jane is a technology enthusiast with a strong background in software development.',
       imgUrl: '/images/WhatsApp Image 2023-02-25 at 23.57.52.jpg',
@@ -27,29 +50,7 @@ function AboutUs() {
       },
     },
     {
-      name: 'Jane Smith',
-      title: 'CTO',
-      description: 'Jane is a technology enthusiast with a strong background in software development.',
-      imgUrl: '/images/WhatsApp Image 2023-02-25 at 23.57.52.jpg',
-      social: {
-        instagram: 'https://www.instagram.com/janesmith',
-        linkedin: 'https://www.linkedin.com/in/janesmith',
-        github: 'https://github.com/janesmith',
-      },
-    },
-    {
-      name: 'Jane Smith',
-      title: 'CTO',
-      description: 'Jane is a technology enthusiast with a strong background in software development.',
-      imgUrl: '/images/WhatsApp Image 2023-02-25 at 23.57.52.jpg',
-      social: {
-        instagram: 'https://www.instagram.com/janesmith',
-        linkedin: 'https://www.linkedin.com/in/janesmith',
-        github: 'https://github.com/janesmith',
-      },
-    },
-    {
-      name: 'Jane Smith',
+      name: ' Minindiya',
       title: 'CTO',
       description: 'Jane is a technology enthusiast with a strong background in software development.',
       imgUrl: '/images/WhatsApp Image 2023-02-25 at 23.57.52.jpg',
