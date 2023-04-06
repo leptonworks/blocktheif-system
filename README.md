@@ -30,9 +30,7 @@ This project aims to create a secure and reliable system for users to verify the
 
 
 
-# blocktheif-system
-
-Packages    -    Client   -  npm install 
+Packages    -    Client   - npm install 
                             npm install react-icons --save
                             npm i react-router-dom
 
@@ -41,15 +39,15 @@ Packages    -    Client   -  npm install
                             npm install recharts
                             npm install react-modal
                             npm install react-number-format
-npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
-npm install @mui/icons-material@latest
-npm i react-qr-reader
-npm i react-toastify
-npm i axios
-npm i reactstrap
+                            npm install @mui/material@latest @emotion/react@latest @emotion/styled@latest
+                            npm install @mui/icons-material@latest
+                            npm i react-qr-reader
+                            npm i react-toastify
+                            npm i axios
+                            npm i reactstrap
 
 
 
-                Contract          -  npx hardhat run scripts/sample-script.js --network localhost 
-                                     npx hardhat test
-                                     npx hardhat node
+       Contract          -  npx hardhat run scripts/sample-script.js --network localhost 
+                            npx hardhat test
+                            npx hardhat node
