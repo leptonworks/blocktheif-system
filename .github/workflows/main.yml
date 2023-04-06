@@ -1,0 +1,28 @@
+name: Build and Test Frontend
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: 'Demo_002'
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.12.1'
+
+    - name: Install dependencies
+      working-directory: ./client
+      run: npm install
+
+    - name: Build the application
+      working-directory: ./client
+      run: npm run build

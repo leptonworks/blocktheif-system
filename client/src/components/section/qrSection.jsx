@@ -1,46 +1,40 @@
 import React from "react";
-
 import ScanButton from "../buttons/scanButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQrcode } from "@fortawesome/free-solid-svg-icons";
 
-function qrSection() {
+function QrSection() {
   return (
-    <section className="h-screen grid grid-cols-1">
-      <div className="col-span-1 text-left bg-black text-white font-bold py-32 md:p-20">
-        <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient ">
-          Scan Your
-          <br />
-          QR
-        </h1>
-
-
-              <div className = "flex items-center justify-center">
+    <section className="h-screen grid grid-cols-1 bg-gradient-to-r from-[#2a5298] to-[#1e3c72]">
+      <div className="col-span-1 text-left text-white font-bold py-10 md:p-20 lg:py-32">
+        <div className="md:flex md:flex-row md:items-center md:justify-between">
+          <div className="md:w-1/2 lg:w-2/3 px-4 md:px-0">
+            <div className="md:w-1/2 lg:w-1/2 px-6 py-10 md:py-0 w-96 lg:w-auto">
+              <FontAwesomeIcon
+                icon={faQrcode}
+                className="hidden sm:block w-full h-auto lg:h-full text-white"
+                size="6x"
+              />
+            </div>
+          </div>
+          <div className="my-4">
+            <div className="flex flex-col items-center justify-center mb-4">
+              <h1 className="text-yellow-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl py-2">
+                Scan Your QR <br />
+              </h1>
+              <h3 className="text-lime-400 font-bold text-center sm:w-9/12 md:w-7/12 lg:w-9/12 text-lg md:text-xl lg:text-2xl">
+                "Empower yourself with the assurance of authenticity. Scan your
+                products with Blockthief's QR code scanner."
+              </h3>
+              <div className="flex items-center justify-center mt-4">
                 <ScanButton />
               </div>
-
-        
-      </div>
-      <div className="col-span-1 text-center bg-gray-300 text-white font-bold py-32">
-        <p className="text-end my-2 text-black font-bold md:w-9/12 w-11/12 text-base">
-          "Empower yourself with the assurance of authenticity. Scan your
-          products with Blockthief's QR code scanner."
-        </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-<section className="h-screen grid md:grid-cols-2 justify-center items-center">
-  <div className="flex w-full justify-left items-center gradient-bg-services">
-    <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
-      <div className="flex-1 flex flex-col justify-start items-start">
-        <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-          "Empower yourself with the assurance of authenticity. Scan your
-          products with Blockthief's QR code scanner."
-        </p>
-      </div>
-      <div className="flex-1 flex flex-col justify-start items-center"></div>
-    </div>
-  </div>
-</section>;
-
-export default qrSection;
+export default QrSection;
