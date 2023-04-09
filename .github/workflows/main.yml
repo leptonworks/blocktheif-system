@@ -2,7 +2,7 @@ name: Build and Test Frontend
 
 on:
   push:
-    branches: [ release ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        ref: 'Demo_002'
+        ref: 'main'
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v2
