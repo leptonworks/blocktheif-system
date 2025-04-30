@@ -54,7 +54,7 @@ const App = () => (
           <Route path="/Manufacturer" element={<ManufacturerPage />} />
           <Route path="/AboutUs" element={<AboutUsPage />} />
 
-          <Route path="/Reviews" element={<ReviewPage />} />
+          {/* <Route path="/Reviews" element={<ReviewPage />} /> */}
           <Route path="/AddProduct" element={<AddProduct />} />
           <Route path="/ManuDashboard" element={<ManuDashboard />} />
           <Route path="/Manulogin" element={<Manulogin />} />
@@ -91,8 +91,8 @@ const App = () => (
                 <Hero />
                 <QR />
                 <Manufacturer />
-                <Review />
-                <AboutUS />
+                {/* <Review /> */}
+                {/* <AboutUS /> */}
                 <Footer />
               </>
             }
